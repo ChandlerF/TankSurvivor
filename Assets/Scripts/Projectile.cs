@@ -4,12 +4,13 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     [SerializeField, Range(1, 10)] int damage;
-
-    Action<Projectile> _repoolAction;
     Transform _shooter;
-    public void Init(Action<Projectile> repoolAction)
+
+    float objectLifeSpan = 3f;
+
+    private void Start()
     {
-        _repoolAction = repoolAction;
+        Destroy(gameObject, objectLifeSpan);
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -23,8 +24,6 @@ public class Projectile : MonoBehaviour
             //Register the shooter's location for UI indicator
             Register();
         }
-        //Repool the projectile
-        _repoolAction(this);
     }
 
     public void SetShooter(Transform shooter)

@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ReticleMouseFollow : MonoBehaviour
 {
-    Camera mainCam;
+    [SerializeField] InputActionReference _reticlePosition;
 
+    Vector3 reticlePos;
+    Vector3 reticleWorldPos;
+    Camera mainCam;
     private void Awake()
     {
         mainCam = Camera.main;
@@ -18,11 +22,14 @@ public class ReticleMouseFollow : MonoBehaviour
 
     private void FollowMouse()
     {
-        //Grab mouse position based on camview
-        Vector3 mouseWorldPosition = mainCam.ScreenToWorldPoint(Input.mousePosition);
-        //backoff the z since plane will be on z = 0
-        mouseWorldPosition.z = 0f;
+        //Grab mouse/right stick/touch position based on camview
+        reticlePos = _reticlePosition.action.ReadValue<Vector2>();
+        //backoff the z for 2D
+        reticlePos.z = mainCam.nearClipPlane;
+        //Get the world spot
+        reticleWorldPos = mainCam.ScreenToWorldPoint(reticlePos);
         //move the reticle
-        transform.position = mouseWorldPosition;
+        transform.position = reticleWorldPos;
+
     }
 }
