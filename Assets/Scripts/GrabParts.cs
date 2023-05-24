@@ -49,9 +49,14 @@ public class GrabParts : MonoBehaviour
 
     private void RepairPart()
     {
+        if(!TankDamageSystem.Instance.CanRepair(heldPart, _hitInfo.transform.gameObject)) 
+        {
+            return;
+        }
 
+        //Nees to make it a progress bar so player has ro hold a button for 30 seconds
 
-
+        TankDamageSystem.Instance.RepairPart();
 
         _isHolding = false;
 
