@@ -42,12 +42,13 @@ GameObject:
   - component: {fileID: 7467278494257993971}
   - component: {fileID: 7467278494257993970}
   - component: {fileID: 2826854916093698149}
+  - component: {fileID: -2687731959339845750}
   - component: {fileID: 8767748376350668885}
   - component: {fileID: 2057815233306217857}
   - component: {fileID: 1540240970834660207}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -202,6 +203,22 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &-2687731959339845750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7467278494257993969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 098e00992e8f3064f9d191d5eeb87642, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 4062877965554532039, guid: ea4826c3d9c80cc4bb7728c510c5f334, type: 3}
+  shootPos: {fileID: 1850991372447831657}
+  _shoot: {fileID: 4954941108572084123, guid: 51b39a6c9acae044f8c7f8a02d880b2c, type: 3}
+  projectileSpeed: 30
 --- !u!114 &8767748376350668885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,6 +232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveSpeed: 6
+  pointPosition: {fileID: 4579596721614300642, guid: 51b39a6c9acae044f8c7f8a02d880b2c, type: 3}
 --- !u!50 &2057815233306217857
 Rigidbody2D:
   serializedVersion: 4

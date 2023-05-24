@@ -12,8 +12,9 @@ public class Projectile : MonoBehaviour
     {
         Destroy(gameObject, objectLifeSpan);
     }
-    private void OnTriggerEnter(Collider other)
+    void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log("Projectile entered collider of " + other.name);
         //If the collision involves the IDamage interface
         IDamage damageable = other.gameObject.GetComponent<IDamage>();
         //Deal the damage
