@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 9169955695207103165}
   m_Layer: 9
   m_Name: Barrel
-  m_TagString: Untagged
+  m_TagString: TankBarrel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

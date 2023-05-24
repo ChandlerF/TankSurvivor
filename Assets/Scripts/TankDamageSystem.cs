@@ -4,52 +4,99 @@ using UnityEngine;
 
 public class TankDamageSystem : MonoBehaviour
 {
+    public static TankDamageSystem Instance;
+
     [SerializeField] private GameObject _tracksOriginal, _guardsOriginal, _headOriginal, _barrelOriginal;
 
     [SerializeField] private GameObject _tracksPrefab, _guardsPrefab, _headPrefab, _barrelPrefab;
     public bool Tracks = true, Guards = true, Head = true, Barrel = true;
 
     [SerializeField] private Material _repairableMat;
-    
-    /*
+
+
+    private void Awake()
+    {
+        if(Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.K)) { SelectRandomPart(); }
-    }*/
+    }
+
+    
+
+
+
 
     public void SelectRandomPart()
     {
-
-        //There is overlap
+        //There is overlap, think of it as a chance of luck for player
         int x = Random.Range(0, 4);
 
         if(x == 0)
         {
-            LosePart(_tracksOriginal, _tracksPrefab, Tracks);
+            LosePart(_tracksOriginal, _tracksPrefab);
         }
         else if(x == 1)
         {
-            LosePart(_guardsOriginal, _guardsPrefab, Guards);
+            LosePart(_guardsOriginal, _guardsPrefab);
         } 
         else if(x == 2)
         {
-            LosePart(_headOriginal, _headPrefab, Head);
+            LosePart(_headOriginal, _headPrefab);
         } 
         else if(x== 3) 
         {
-            LosePart(_barrelOriginal, _barrelPrefab, Barrel);
+            LosePart(_barrelOriginal, _barrelPrefab);
         }
+    }
+
+   
+    public bool CanRepair(GameObject heldPart, GameObject brokenPart)
+    {
+        if (heldPart.CompareTag(brokenPart.tag)) return true;
+        else return false;
     }
 
 
 
-
-
-
-
-    private void LosePart(GameObject original, GameObject prefab, bool _bool)
+    private void LosePart(GameObject original, GameObject prefab)
     {
-        _bool = false;
+        //Very messy, however when passing a bool through LosePart()  - when trying to change it, it changes a newly created bool, not the one that was passed through, i could be stupid, but i'm too tired at this point
+        if(original == _tracksOriginal)
+        {
+            if (!Tracks) return;
+            else Tracks = false;
+        }
+        else if(original == _guardsOriginal)
+        {
+            if (!Guards) return;
+            else Guards = false;
+        }
+        else if(original == _barrelOriginal)
+        {
+            if (!Barrel) return;
+            else Barrel = false;
+        }
+        else if(original == _headOriginal)
+        {
+            if (!Head) return;
+            else Head = false;
+        }
+
+
+
+
+
+
         original.GetComponent<MeshRenderer>().material = _repairableMat;
         original.GetComponent<BoxCollider>().enabled = false;
 
