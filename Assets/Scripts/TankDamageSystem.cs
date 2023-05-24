@@ -70,31 +70,7 @@ public class TankDamageSystem : MonoBehaviour
 
     private void LosePart(GameObject original, GameObject prefab)
     {
-        //Very messy, however when passing a bool through LosePart()  - when trying to change it, it changes a newly created bool, not the one that was passed through, i could be stupid, but i'm too tired at this point
-        if(original == _tracksOriginal)
-        {
-            if (!Tracks) return;
-            else Tracks = false;
-        }
-        else if(original == _guardsOriginal)
-        {
-            if (!Guards) return;
-            else Guards = false;
-        }
-        else if(original == _barrelOriginal)
-        {
-            if (!Barrel) return;
-            else Barrel = false;
-        }
-        else if(original == _headOriginal)
-        {
-            if (!Head) return;
-            else Head = false;
-        }
-
-
-
-
+        SetBool(original, false);
 
 
         original.GetComponent<MeshRenderer>().material = _repairableMat;
@@ -108,11 +84,37 @@ public class TankDamageSystem : MonoBehaviour
 
 
 
-    public void RepairPart(GameObject original, GameObject prefab, bool _bool)
+    public void RepairPart(GameObject original, GameObject prefab)
     {
-        _bool = true;
+        SetBool(original, true);
         original.GetComponent<MeshRenderer>().material = prefab.GetComponent<MeshRenderer>().material;
         original.GetComponent<BoxCollider>().enabled = true;
 
+    }
+
+
+    private void SetBool(GameObject original, bool setBool)
+    {
+        //Very messy, however when passing a bool through LosePart()  - when trying to change it, it changes a newly created bool, not the one that was passed through, i could be stupid, but i'm too tired at this point
+        if(original == _tracksOriginal)
+        {
+            if (!Tracks) return;
+            else Tracks = setBool;
+        }
+        else if(original == _guardsOriginal)
+        {
+            if (!Guards) return;
+            else Guards = setBool;
+        }
+        else if(original == _barrelOriginal)
+        {
+            if (!Barrel) return;
+            else Barrel = setBool;
+        }
+        else if(original == _headOriginal)
+        {
+            if (!Head) return;
+            else Head = setBool;
+        }
     }
 }
