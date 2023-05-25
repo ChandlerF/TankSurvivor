@@ -9,6 +9,8 @@ public class PlayerHealth : MonoBehaviour, IDamage
     [SerializeField, Range(0, 0.99f)] float partsLossIncrementAmount;
 
     int HPtoBeCompared;
+    int numPartsLost = 0;
+    const int MAX_PARTS = 4;
     bool isDead, lostPart;
     // Start is called before the first frame update
     void Start()
@@ -26,7 +28,8 @@ public class PlayerHealth : MonoBehaviour, IDamage
         {
             StartCoroutine(OnDead());
         }
-        if (HP <= (HPtoBeCompared * partsLossIncrementAmount) && !lostPart && !isDead)
+        if (HP <= HPtoBeCompared - (HPtoBeCompared * partsLossIncrementAmount) && 
+            !lostPart && !isDead && numPartsLost < MAX_PARTS)
         {
             StartCoroutine(LoseAPart());
         }
@@ -35,6 +38,7 @@ public class PlayerHealth : MonoBehaviour, IDamage
     IEnumerator LoseAPart()
     {
         lostPart = true;
+        numPartsLost++;
         ProcessLosingParts();
         HPtoBeCompared = HP;
         yield return new WaitForSeconds(0.5f);
