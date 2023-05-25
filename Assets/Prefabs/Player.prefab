@@ -281,6 +281,7 @@ GameObject:
   - component: {fileID: 8887034380295443786}
   - component: {fileID: 8887034380295443787}
   - component: {fileID: 8887034380295443791}
+  - component: {fileID: 4236912797925591566}
   - component: {fileID: 8887034380295443788}
   - component: {fileID: 8887034380295443790}
   m_Layer: 0
@@ -421,6 +422,20 @@ MonoBehaviour:
   shootPos: {fileID: 8887034380024620501}
   _shoot: {fileID: 4954941108572084123, guid: 51b39a6c9acae044f8c7f8a02d880b2c, type: 3}
   projectileSpeed: 30
+--- !u!114 &4236912797925591566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8887034380295443784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a40376db4bdf17b42bb8a720d8b26815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HP: 50
+  partsLossIncrementAmount: 0.2
 --- !u!50 &8887034380295443788
 Rigidbody2D:
   serializedVersion: 4

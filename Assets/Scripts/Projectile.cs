@@ -41,4 +41,9 @@ public class Projectile : MonoBehaviour
         //damage direction by registering the shooter of the
         //projectile
     }
+
+    public void SetDamage(int damageAdded)
+    {
+        damage += damageAdded;
+    }
 }

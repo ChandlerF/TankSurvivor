@@ -282,10 +282,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2831658700092686653}
+  - component: {fileID: 954357936}
   - component: {fileID: 954357935}
   - component: {fileID: 954357938}
   - component: {fileID: 954357937}
-  - component: {fileID: 954357936}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Untagged
@@ -310,6 +310,33 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -48.655}
+--- !u!114 &954357936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1056820262168646217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c0b217ce9405744b9d688f7926a298a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackDistance: 10
+  bulletSpeed: 30
+  shootRate: 0.5
+  turnSpeed: 1
+  HP: 5
+  shootPosParent: {fileID: 584914092175414690}
+  animator: {fileID: 667025031816888364}
+  bullet: {fileID: 196523161219182828, guid: ea4826c3d9c80cc4bb7728c510c5f334, type: 3}
+  shootPos: {fileID: 8839929710605838845}
+  particles:
+  - {fileID: 3194091407477845130}
+  trigger: {fileID: 954357935}
+  aud: {fileID: 954357937}
+  explosion: {fileID: 8300000, guid: 2643fda6554b3f4419d1c201bacf7269, type: 3}
+  shootAudio: {fileID: 8300000, guid: 1ed471d97123e3d4a9fa8602e4b3f214, type: 3}
 --- !u!58 &954357935
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -443,33 +470,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &954357936
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1056820262168646217}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c0b217ce9405744b9d688f7926a298a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackDistance: 10
-  bulletSpeed: 30
-  shootRate: 0.5
-  turnSpeed: 1
-  HP: 5
-  shootPosParent: {fileID: 584914092175414690}
-  animator: {fileID: 667025031816888364}
-  bullet: {fileID: 196523161219182828, guid: ea4826c3d9c80cc4bb7728c510c5f334, type: 3}
-  shootPos: {fileID: 8839929710605838845}
-  particles:
-  - {fileID: 3194091407477845130}
-  trigger: {fileID: 954357935}
-  aud: {fileID: 954357937}
-  explosion: {fileID: 8300000, guid: 2643fda6554b3f4419d1c201bacf7269, type: 3}
-  shootAudio: {fileID: 8300000, guid: 1ed471d97123e3d4a9fa8602e4b3f214, type: 3}
 --- !u!1 &1907464287215077557
 GameObject:
   m_ObjectHideFlags: 0
