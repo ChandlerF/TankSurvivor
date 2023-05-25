@@ -70,11 +70,28 @@ public class TankDamageSystem : MonoBehaviour
 
     private void LosePart(GameObject original, GameObject prefab)
     {
-        SetBool(original, false);
+        if (original == _tracksOriginal)
+        {
+            if (!Tracks) return;
+        }
+        else if (original == _guardsOriginal)
+        {
+            if (!Guards) return;
+        }
+        else if (original == _barrelOriginal)
+        {
+            if (!Barrel) return;
+        }
+        else if (original == _headOriginal)
+        {
+            if (!Head) return;
+        }
+
+        SetBool(prefab, false);
 
 
         original.GetComponent<MeshRenderer>().material = _repairableMat;
-        original.GetComponent<BoxCollider>().enabled = false;
+        original.GetComponent<BoxCollider>().isTrigger = true;
 
         Vector3 explosionOffset = new Vector3(Random.Range(-8.0f, 8.0f), Random.Range(0.1f, 3f), Random.Range(-8.0f, 8.0f));
 
@@ -86,35 +103,31 @@ public class TankDamageSystem : MonoBehaviour
 
     public void RepairPart(GameObject original, GameObject prefab)
     {
-        SetBool(original, true);
+        SetBool(prefab, true);
         original.GetComponent<MeshRenderer>().material = prefab.GetComponent<MeshRenderer>().material;
-        original.GetComponent<BoxCollider>().enabled = true;
+        original.GetComponent<BoxCollider>().isTrigger = false;
 
     }
 
 
-    private void SetBool(GameObject original, bool setBool)
+    private void SetBool(GameObject obj, bool setBool)
     {
         //Very messy, however when passing a bool through LosePart()  - when trying to change it, it changes a newly created bool, not the one that was passed through, i could be stupid, but i'm too tired at this point
-        if(original == _tracksOriginal)
+        if(obj.CompareTag(_tracksPrefab.tag))
         {
-            if (!Tracks) return;
-            else Tracks = setBool;
+            Tracks = setBool;
         }
-        else if(original == _guardsOriginal)
+        else if(obj.CompareTag(_guardsPrefab.tag))
         {
-            if (!Guards) return;
-            else Guards = setBool;
+            Guards = setBool;
         }
-        else if(original == _barrelOriginal)
+        else if(obj.CompareTag(_barrelPrefab.tag))
         {
-            if (!Barrel) return;
-            else Barrel = setBool;
+            Barrel = setBool;
         }
-        else if(original == _headOriginal)
+        else if(obj.CompareTag(_headPrefab.tag))
         {
-            if (!Head) return;
-            else Head = setBool;
+            Head = setBool;
         }
     }
 }

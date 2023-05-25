@@ -19,11 +19,14 @@ public class GrabParts : MonoBehaviour
                 _hitInfo.transform.CompareTag("TankWheelGuard") ||
                 _hitInfo.transform.CompareTag("TankHead"))
             {
-                if(!_isHolding && _hitInfo.transform.TryGetComponent<Rigidbody>(out _))
+
+                _hitInfo.transform.TryGetComponent<BoxCollider>(out BoxCollider boxCollider);
+
+                if (!_isHolding && _hitInfo.transform.TryGetComponent<Rigidbody>(out _))
                 {
                     PickupPart();
                 }
-                else if(_isHolding && !_hitInfo.transform.GetComponent<BoxCollider>().enabled)
+                else if(_isHolding && boxCollider.isTrigger)
                 {
                     RepairPart();
                 }
@@ -57,7 +60,7 @@ public class GrabParts : MonoBehaviour
         //Nees to make it a progress bar so player has to hold a button for 30 seconds
         //Head to comment out the line below because it was causing a comp error
         //It needs the original and the prefab
-        //TankDamageSystem.Instance.RepairPart();
+        TankDamageSystem.Instance.RepairPart( _hitInfo.transform.gameObject, _heldPart);
 
         _isHolding = false;
 
