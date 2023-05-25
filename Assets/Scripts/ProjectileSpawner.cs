@@ -30,7 +30,7 @@ public class ProjectileSpawner : MonoBehaviour
         projectileClone.TryGetComponent<Rigidbody2D>(out Rigidbody2D body);
         if(body != null)
         {
-            body.velocity = transform.up * projectileSpeed;
+            body.velocity = shootPos.transform.up * projectileSpeed;
         }
     }
 }

@@ -5,20 +5,25 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField, Range(0.01f, 5f)] float _moveSpeed = 1f;
     [SerializeField] InputActionReference pointPosition;
+    [SerializeField] Transform tankBody;
+    [SerializeField] Transform tankHull;
 
     private Vector2 pointPos;
     private Vector2 _moveInput;
-    private Rigidbody2D _rb;
+    private Rigidbody2D _rbBody;
+    private Rigidbody2D _rbHull;
 
 
     private void Start()
     {
-        _rb = GetComponent<Rigidbody2D>();
+        _rbBody = tankBody.GetComponent<Rigidbody2D>();
+        _rbHull = tankHull.GetComponent<Rigidbody2D>();
     }
 
     private void FixedUpdate()
     {
-        _rb.MovePosition(_rb.position + _moveInput * _moveSpeed * Time.fixedDeltaTime);
+        _rbBody.MovePosition(_rbBody.position + _moveInput * _moveSpeed * Time.fixedDeltaTime);
+        
 
        // RotateTowardsMouse();
 
@@ -36,11 +41,11 @@ public class PlayerMovement : MonoBehaviour
     {
         pointPos = Camera.main.ScreenToWorldPoint(pointPosition.action.ReadValue<Vector2>());
         
-        Vector2 facingDirection = pointPos - _rb.position;
+        Vector2 facingDirection = pointPos - _rbHull.position;
 
         float angle = Mathf.Atan2(facingDirection.y, facingDirection.x) * Mathf.Rad2Deg;
 
-        _rb.MoveRotation(angle - 90f);
+        _rbHull.MoveRotation(angle - 90f);
     }
     private void RotateTowardsMouse()
     {

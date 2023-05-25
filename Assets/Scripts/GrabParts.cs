@@ -49,14 +49,15 @@ public class GrabParts : MonoBehaviour
 
     private void RepairPart()
     {
-        if(!TankDamageSystem.Instance.CanRepair(heldPart, _hitInfo.transform.gameObject)) 
+        if(!TankDamageSystem.Instance.CanRepair(_heldPart, _hitInfo.transform.gameObject)) 
         {
             return;
         }
 
-        //Nees to make it a progress bar so player has ro hold a button for 30 seconds
-
-        TankDamageSystem.Instance.RepairPart();
+        //Nees to make it a progress bar so player has to hold a button for 30 seconds
+        //Head to comment out the line below because it was causing a comp error
+        //It needs the original and the prefab
+        //TankDamageSystem.Instance.RepairPart();
 
         _isHolding = false;
 
