@@ -7,9 +7,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] InputActionReference pointPosition;
     [SerializeField] Transform tankBody;
     [SerializeField] Transform tankHull;
+    [SerializeField] float bodyRotateSpeed;
 
     private Vector2 pointPos;
     private Vector2 _moveInput;
+    private Vector2 _smoothMovementInput;
+    private Vector2 _movementInputSmoothVelocity;
+
     private Rigidbody2D _rbBody;
     private Rigidbody2D _rbHull;
 
@@ -22,14 +26,24 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _rbBody.MovePosition(_rbBody.position + _moveInput * _moveSpeed * Time.fixedDeltaTime);
-        
+        SmoothMovement();
+        RotateInDirectionOfInput();
 
-       // RotateTowardsMouse();
+        // RotateTowardsMouse();
 
         FollowMousePosition();
     }
 
+    private void SmoothMovement()
+    {
+        _smoothMovementInput = Vector2.SmoothDamp(
+            _smoothMovementInput,
+            _moveInput,
+            ref _movementInputSmoothVelocity,
+            0.01f);
+
+        _rbBody.velocity = _smoothMovementInput * _moveSpeed;
+    }
 
     private void OnMove(InputValue value)
     {
@@ -62,5 +76,16 @@ public class PlayerMovement : MonoBehaviour
     float AngleBetweenTwoPoints(Vector3 a, Vector3 b)
     {
         return Mathf.Atan2(a.y - b.y, a.x - b.x) * Mathf.Rad2Deg;
+    }
+
+    void RotateInDirectionOfInput()
+    {
+        if(_moveInput != Vector2.zero)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(transform.forward, _smoothMovementInput);
+            Quaternion rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, bodyRotateSpeed * Time.deltaTime);
+
+            _rbBody.MoveRotation(rotation);
+        }
     }
 }
