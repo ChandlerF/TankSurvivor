@@ -17,6 +17,7 @@ public class TurretAI : MonoBehaviour, IDamage
     [SerializeField] GameObject bullet;
     [SerializeField] Transform shootPos;
     [SerializeField] GameObject[] particles;
+    [SerializeField] Collider2D trigger;
     [SerializeField] AudioSource aud;
     [SerializeField] AudioClip explosion;
     [SerializeField] AudioClip shootAudio;
@@ -37,7 +38,7 @@ public class TurretAI : MonoBehaviour, IDamage
         StartRotating();
         if (Vector3.Distance(playerTransform.position, transform.position) <= attackDistance)
         {
-            if (!isShooting)
+            if (!isShooting && !isExploding)
             {
                 StartCoroutine(ShootPlayer());
             }
@@ -69,8 +70,11 @@ public class TurretAI : MonoBehaviour, IDamage
 
     public void TakeDamage(int amount)
     {
-        HP -= amount;
-        if (HP <= 0)
+        if(HP > 0)
+        {
+            HP -= amount;
+        }
+        if (HP <= 0 && !isExploding)
         {
             StartCoroutine(ProcessExplosion());
         }
@@ -85,11 +89,8 @@ public class TurretAI : MonoBehaviour, IDamage
             {
                 particles[i].SetActive(true);
             }
-            if (!aud.isPlaying)
-            {
-                aud.PlayOneShot(explosion, 0.2f);
-            }
-            yield return new WaitForSeconds(0.5f);
+            aud.PlayOneShot(explosion);
+            yield return new WaitForSeconds(1f);
             isExploding = false;
         }
         this.gameObject.SetActive(false);

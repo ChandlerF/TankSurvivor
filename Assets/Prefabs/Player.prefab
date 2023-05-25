@@ -322,6 +322,7 @@ MonoBehaviour:
   pointPosition: {fileID: 4579596721614300642, guid: 51b39a6c9acae044f8c7f8a02d880b2c, type: 3}
   tankBody: {fileID: 8887034380295443789}
   tankHull: {fileID: 8887034379100966004}
+  bodyRotateSpeed: 300
 --- !u!114 &8887034380295443787
 MonoBehaviour:
   m_ObjectHideFlags: 0

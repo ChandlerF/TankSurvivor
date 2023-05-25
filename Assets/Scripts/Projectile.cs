@@ -25,6 +25,7 @@ public class Projectile : MonoBehaviour
             //Register the shooter's location for UI indicator
             Register();
         }
+        gameObject.SetActive(false);
     }
 
     public void SetShooter(Transform shooter)
