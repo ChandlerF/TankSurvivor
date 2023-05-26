@@ -1,6 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour, IDamage
 {
@@ -8,13 +8,18 @@ public class PlayerHealth : MonoBehaviour, IDamage
     [SerializeField] int HP = 50;
     [SerializeField, Range(0, 0.99f)] float partsLossIncrementAmount;
 
+    [Header("Components")]
+    [SerializeField] Slider slider;
+
     int HPtoBeCompared;
     int numPartsLost = 0;
     const int MAX_PARTS = 4;
     bool isDead, lostPart;
+
     void Start()
     {
         HPtoBeCompared = HP;
+        SetMaxHealth(HP);
     }
 
     public void TakeDamage(int amount)
@@ -22,10 +27,12 @@ public class PlayerHealth : MonoBehaviour, IDamage
         if(HP > 0)
         {
             HP -= amount;
+            SetHealth(HP);
             CinemachineShake.Instance.ShakeCamera(1f, 0.5f);
         }
         else if (HP <= 0 && !isDead)
         {
+            SetHealth(HP);
             CinemachineShake.Instance.ShakeCamera(1f, 0.5f);
             StartCoroutine(OnDead());
         }
@@ -48,15 +55,26 @@ public class PlayerHealth : MonoBehaviour, IDamage
         lostPart = false;
     }
 
-    void ProcessLosingParts()
-    {
-        TankDamageSystem.Instance.SelectRandomPart();
-    }
-
     IEnumerator OnDead()
     {
         isDead = true;
         //TODO fun blowy up stuff and a lose screen
         yield return new WaitForSeconds(1f);
+    }
+
+    void ProcessLosingParts()
+    {
+        TankDamageSystem.Instance.SelectRandomPart();
+    }
+
+    void SetMaxHealth(int health)
+    {
+        slider.maxValue = health;
+        slider.value = health;
+    }
+
+    void SetHealth(int health)
+    {
+        slider.value = health;
     }
 }
