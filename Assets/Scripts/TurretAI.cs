@@ -51,8 +51,8 @@ public class TurretAI : MonoBehaviour, IDamage
 
     void LookAt()
     {
-        var dir = player.transform.position - transform.position;
-        var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg + 90;
+        Vector3 dir = player.transform.position - transform.position;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg + 90;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
     IEnumerator ShootPlayer()

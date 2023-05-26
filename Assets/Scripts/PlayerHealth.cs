@@ -28,6 +28,8 @@ public class PlayerHealth : MonoBehaviour, IDamage
         {
             StartCoroutine(OnDead());
         }
+        //Here if the incremental damage set in the inspector has been satisfied
+        //The player will lose a part
         if (HP <= HPtoBeCompared - (HPtoBeCompared * partsLossIncrementAmount) && 
             !lostPart && !isDead && numPartsLost < MAX_PARTS)
         {
