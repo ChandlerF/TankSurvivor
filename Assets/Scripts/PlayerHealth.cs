@@ -12,7 +12,6 @@ public class PlayerHealth : MonoBehaviour, IDamage
     int numPartsLost = 0;
     const int MAX_PARTS = 4;
     bool isDead, lostPart;
-    // Start is called before the first frame update
     void Start()
     {
         HPtoBeCompared = HP;
@@ -23,9 +22,11 @@ public class PlayerHealth : MonoBehaviour, IDamage
         if(HP > 0)
         {
             HP -= amount;
+            CinemachineShake.Instance.ShakeCamera(1f, 0.5f);
         }
         else if (HP <= 0 && !isDead)
         {
+            CinemachineShake.Instance.ShakeCamera(1f, 0.5f);
             StartCoroutine(OnDead());
         }
         //Here if the incremental damage set in the inspector has been satisfied

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Pool;
@@ -8,11 +9,20 @@ public class ProjectileSpawner : MonoBehaviour
     [Header("--- Components ---")]
     [SerializeField] Projectile projectilePrefab;
     [SerializeField] Transform shootPos;
+    [SerializeField] Transform shootPosParent;
     [SerializeField] InputActionReference _shoot;
+    [SerializeField] AudioSource aud;
+    [SerializeField] AudioClip shootAud;
+    [SerializeField] GameObject muzzleFlash;
 
     [Header("--- Projectile Movement ---")]
     [SerializeField] float projectileSpeed;
 
+    [Header("Projectile Stats")]
+    [SerializeField] int shootRate;
+    [SerializeField] int damage;
+
+    bool isShooting;
 
     void OnEnable()
     {
@@ -26,11 +36,31 @@ public class ProjectileSpawner : MonoBehaviour
 
     private void Spawn(InputAction.CallbackContext obj)
     {
-        GameObject projectileClone = Instantiate(projectilePrefab.gameObject, shootPos.position, projectilePrefab.gameObject.transform.rotation);
-        projectileClone.TryGetComponent<Rigidbody2D>(out Rigidbody2D body);
-        if(body != null)
+        if(!isShooting)
         {
-            body.velocity = shootPos.transform.up * projectileSpeed;
+            StartCoroutine(Shoot());
         }
+    }
+
+    IEnumerator Shoot()
+    {
+        isShooting = true;
+        CinemachineShake.Instance.ShakeCamera(1f, 0.5f);
+        muzzleFlash.SetActive(true);
+        aud.PlayOneShot(shootAud, 0.3f);
+        GameObject projectileClone = Instantiate(projectilePrefab.gameObject, shootPos.position, shootPos.rotation);
+        Projectile projectile = projectileClone.GetComponent<Projectile>();
+
+        projectileClone.TryGetComponent<Rigidbody2D>(out Rigidbody2D body);
+        projectile.SetDamage(damage);
+
+        if (body != null)
+        {
+            body.velocity = shootPosParent.transform.up * projectileSpeed;
+        }
+        yield return new WaitForSeconds(0.1f);
+        muzzleFlash.SetActive(false);
+        yield return new WaitForSeconds(shootRate);
+        isShooting = false;
     }
 }

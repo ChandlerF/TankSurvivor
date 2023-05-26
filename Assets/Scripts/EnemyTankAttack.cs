@@ -10,6 +10,8 @@ public class EnemyTankAttack : MonoBehaviour
     [SerializeField] AudioSource aud;
     [SerializeField] AudioClip shootAudio;
     [SerializeField] WaypointMover waypoints;
+    [SerializeField] EnemyHealthSystem healthSystem;
+    [SerializeField] GameObject muzzleFlash;
 
     [Header("Enemy Stats")]
     [SerializeField] float bulletSpeed;
@@ -26,7 +28,7 @@ public class EnemyTankAttack : MonoBehaviour
         if(!waypoints.IsFollowingWaypoints)
         {
             LookAt();
-            if(!isShooting)
+            if(!isShooting && !healthSystem.IsDead)
             {
                 StartCoroutine(ShootPlayer());
             }
@@ -43,7 +45,10 @@ public class EnemyTankAttack : MonoBehaviour
         isShooting = true;
         GameObject bulletClone = Instantiate(bullet, shootPos.position, bullet.transform.rotation);
         bulletClone.GetComponent<Rigidbody2D>().velocity = shootPosParent.up * bulletSpeed;
+        muzzleFlash.SetActive(true);
         aud.PlayOneShot(shootAudio, 0.1f);
+        yield return new WaitForSeconds(0.1f);
+        muzzleFlash.SetActive(false);
         yield return new WaitForSeconds(shootRate);
         Projectile bulletInfo = bulletClone.GetComponent<Projectile>();
         bulletInfo.SetShooter(transform);
