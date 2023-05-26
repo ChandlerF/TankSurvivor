@@ -322,7 +322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c0b217ce9405744b9d688f7926a298a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDistance: 10
+  attackDistance: 6
   bulletSpeed: 30
   shootRate: 0.5
   turnSpeed: 1
