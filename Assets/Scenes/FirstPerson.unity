@@ -985,5 +985,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5714135118619222647, guid: 11688cb3856db244b9e134f594ecb9c7, type: 3}
+      propertyPath: m_TagString
+      value: TankHull
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11688cb3856db244b9e134f594ecb9c7, type: 3}

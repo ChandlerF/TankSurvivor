@@ -8,6 +8,7 @@ TagManager:
   - TankTracks
   - TankWheelGuard
   - TankBarrel
+  - TankHull
   layers:
   - Default
   - TransparentFX

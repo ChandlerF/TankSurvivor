@@ -34,9 +34,22 @@ public class GrabParts : MonoBehaviour
         }
     }
 
+    private void SecondaryFire()
+    {
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out _hitInfo, 5.0f))
+        {
+            if (_hitInfo.transform.CompareTag("TankHull")) 
+            {
+
+                //Function to swap inside of tank
+
+            }
+        }
+    }
 
 
-    private void PickupPart()
+
+        private void PickupPart()
     {
         _isHolding = true;
 
@@ -57,9 +70,7 @@ public class GrabParts : MonoBehaviour
             return;
         }
 
-        //Nees to make it a progress bar so player has to hold a button for 30 seconds
-        //Head to comment out the line below because it was causing a comp error
-        //It needs the original and the prefab
+        //Progress Bar?
         TankDamageSystem.Instance.RepairPart( _hitInfo.transform.gameObject, _heldPart);
 
         _isHolding = false;

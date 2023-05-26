@@ -112,7 +112,6 @@ public class TankDamageSystem : MonoBehaviour
 
     private void SetBool(GameObject obj, bool setBool)
     {
-        //Very messy, however when passing a bool through LosePart()  - when trying to change it, it changes a newly created bool, not the one that was passed through, i could be stupid, but i'm too tired at this point
         if(obj.CompareTag(_tracksPrefab.tag))
         {
             Tracks = setBool;
