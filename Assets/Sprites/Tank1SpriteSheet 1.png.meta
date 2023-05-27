@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8eaa0eebcdb18054cb8042ae2b2df237
+guid: c46cc05ac73c9de4d902ae609b42fe35
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -105,7 +105,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Tank1Hull
+      name: TankHull
       rect:
         serializedVersion: 2
         x: 0
@@ -113,20 +113,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 9
-      pivot: {x: 0.47082165, y: 0.5554388}
+      pivot: {x: 0.46790382, y: 0.54960316}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0ade5a0c4fee2304c848bee1b7e4c2ae
-      internalID: -1435869997
+      spriteID: 5f426ef320da43c4da4451ee29bf5f5a
+      internalID: -457965408
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tank1Tracks
+      name: TankTracks
       rect:
         serializedVersion: 2
         x: 16
@@ -134,20 +134,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 9
-      pivot: {x: 0.5262605, y: 0.53209615}
+      pivot: {x: 0.5262605, y: 0.5671102}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 93837f9456a1e1247b525015588d9fb8
-      internalID: 2114596430
+      spriteID: 32f7d23b585ffd24dbf11b0be8f7c6d9
+      internalID: -1901804235
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tank1Head
+      name: TankHead
       rect:
         serializedVersion: 2
         x: 32
@@ -155,20 +155,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 9
-      pivot: {x: 0.46790385, y: 0.46206814}
+      pivot: {x: 0.47082162, y: 0.46206814}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 20a1748c11aa9d4488aed1d87b9cb0f7
-      internalID: 1910550252
+      spriteID: 6ecfa5e77dd599f44a6bee33374e8170
+      internalID: 1942892542
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tank1Barrel
+      name: TankBarrel
       rect:
         serializedVersion: 2
         x: 48
@@ -176,35 +176,35 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 9
-      pivot: {x: 0.53209615, y: 0.63422036}
+      pivot: {x: 0.53209615, y: 0.40954712}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 628fd98819b5bdd4b975e97448987e96
-      internalID: -2047885620
+      spriteID: ce3fa87334f9bbe41a51ab3fd7860520
+      internalID: -582491113
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tank1Example
+      name: TankExample
       rect:
         serializedVersion: 2
-        x: 64
+        x: 65
         y: 0
-        width: 16
+        width: 15
         height: 16
       alignment: 9
-      pivot: {x: 0.5408497, y: 0.46206814}
+      pivot: {x: 0.53501415, y: 0.44747898}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 21b15e9725afb4d40b735a1baf15c9db
-      internalID: 1684920370
+      spriteID: f0fef4178f4c16f488bac9e56a136c6c
+      internalID: 1791935789
       vertices: []
       indices: 
       edges: []
@@ -220,11 +220,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Tank1Barrel: -2047885620
-      Tank1Tracks: -1435869997
-      Tank1Example: 1684920370
-      Tank1Head: 1910550252
-      Tank1Hull: -1435869997
+      TankTracks: -1901804235
+      TankExample: 1791935789
+      TankBarrel: -582491113
+      TankHull: -457965408
+      TankHead: 1942892542
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

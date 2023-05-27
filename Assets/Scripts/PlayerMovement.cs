@@ -42,10 +42,11 @@ public class PlayerMovement : MonoBehaviour
             ref _movementInputSmoothVelocity,
             0.01f);
 
-        //Code was:   _rbBody.velocity = _smoothMovementInput * _moveSpeed;
+        //Code was:
+        _rbBody.velocity = _smoothMovementInput * _moveSpeed;
         //This code caused the player to move awkwardly, feel free to play around with it
 
-        _rbBody.velocity = _moveInput * _moveSpeed;
+        //_rbBody.velocity = _moveInput * _moveSpeed;
     }
 
     private void OnMove(InputValue value)

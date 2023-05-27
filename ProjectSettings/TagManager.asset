@@ -9,6 +9,7 @@ TagManager:
   - TankWheelGuard
   - TankBarrel
   - TankHull
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -45,4 +46,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Environment
+    uniqueID: 3886155991
+    locked: 0
+  - name: Enemies
+    uniqueID: 1337527699
+    locked: 0
+  - name: Player
+    uniqueID: 2590015279
     locked: 0
