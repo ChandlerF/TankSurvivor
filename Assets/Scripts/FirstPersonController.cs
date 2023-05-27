@@ -33,26 +33,31 @@ public class FirstPersonController : MonoBehaviour
         Cursor.visible = false;
     }
 
+
+    //-------------------------------------------------------------------------------------------------------------So I swapped most of this code for vector3 y   ->   vector3.z due to the player being sideways
+    //It still doesnt fullt work and I need to figure out cinemachine to get that working
+    //I also need to make the FollowMouse Function on PlayerMovement.cs be new input and hopefully add a reticle for controllers, then I need to keep the mouse from going off screen
+    //--------------------------------------------------------------------------------------------------------------------------
     void Update()
     {
         // We are grounded, so recalculate move direction based on axes
-        Vector3 forward = transform.TransformDirection(Vector3.forward);
+        Vector3 forward = transform.TransformDirection(Vector3.up);
         Vector3 right = transform.TransformDirection(Vector3.right);
 
         float curSpeedX = canMove ? (walkingSpeed * _moveInput.y) : 0;
         float curSpeedY = canMove ? (walkingSpeed * _moveInput.x) : 0;
-        float _movementDirectionY = moveDirection.y;
+        float _movementDirectionZ = moveDirection.z;
         moveDirection = (forward * curSpeedX) + (right * curSpeedY);
-        moveDirection.y = _movementDirectionY;
+        moveDirection.z = _movementDirectionZ;
 
         if (_isJump && canMove && characterController.isGrounded)
          {
-             moveDirection.y = jumpSpeed;
+             moveDirection.z = jumpSpeed;
             _isJump = false;
          }
          else
          {
-             moveDirection.y = _movementDirectionY;
+             moveDirection.z = _movementDirectionZ;
          }
 
         // Apply gravity. Gravity is multiplied by deltaTime twice (once here, and once below
@@ -60,7 +65,7 @@ public class FirstPersonController : MonoBehaviour
         // as an acceleration (ms^-2)
         if (!characterController.isGrounded)
         {
-            moveDirection.y -= gravity * Time.deltaTime;
+            moveDirection.z += gravity * Time.deltaTime;
         }
 
         // Move the controller

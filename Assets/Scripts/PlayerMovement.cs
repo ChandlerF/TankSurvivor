@@ -17,6 +17,8 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D _rbBody;
     private Rigidbody2D _rbHull;
 
+    [SerializeField] private TankDamageSystem _tankDamageSystem;
+
 
     private void Start()
     {
@@ -91,5 +93,11 @@ public class PlayerMovement : MonoBehaviour
 
             _rbBody.MoveRotation(rotation);
         }
+    }
+
+
+    private void OnSecondaryFire()
+    {
+        _tankDamageSystem.TankToPlayer(_tankDamageSystem.gameObject, true);
     }
 }

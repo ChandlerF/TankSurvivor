@@ -1,6 +1,8 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class TankDamageSystem : MonoBehaviour
 {
@@ -13,8 +15,12 @@ public class TankDamageSystem : MonoBehaviour
 
     [SerializeField] private Material _repairableMat;
 
+    [SerializeField] private PlayerInput _tankMovement, _playerMovement;
+    [SerializeField] private GameObject _tankModel, _desertMap3D, _playerFPS;
+    [SerializeField] private CinemachineVirtualCamera _virtualCamera;
 
-    private void Awake()
+
+   private void Awake()
     {
         if(Instance == null)
         {
@@ -25,13 +31,6 @@ public class TankDamageSystem : MonoBehaviour
             Destroy(this);
         }
     }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.K)) { SelectRandomPart(); }
-    }
-
-    
 
 
 
@@ -128,5 +127,32 @@ public class TankDamageSystem : MonoBehaviour
         {
             Head = setBool;
         }
+    }
+
+
+    public void TankToPlayer(GameObject cameraFollow, bool _bool)
+    {
+        //Player Input Scripts
+        _tankMovement.enabled = !_bool;
+        _playerMovement.enabled = _bool;
+
+        //3D Models and Buildings
+        _tankModel.SetActive(_bool);
+        _desertMap3D.SetActive(_bool);
+
+
+        //Cinemachine, this is un-needed as the priority on the FPS virtual camera is higher
+       /* if(!_bool) _virtualCamera.Priority += 2;
+        else _virtualCamera.Priority -= 2;*/
+
+        //Player FPS postion and active
+        _playerFPS.SetActive(_bool);
+        _playerFPS.transform.localPosition = new Vector3(0, 0, 1);
+    }
+
+
+    private void OnSecondaryFire()
+    {
+        TankToPlayer(_tankMovement.gameObject, false);
     }
 }
