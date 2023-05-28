@@ -10,6 +10,9 @@ public class PlayerHealth : MonoBehaviour, IDamage
 
     [Header("Components")]
     [SerializeField] Slider slider;
+    [SerializeField] AudioSource aud;
+    [SerializeField] AudioClip explosionAudio;
+    [SerializeField] GameObject explosionFX;
 
     int HPtoBeCompared;
     int numPartsLost = 0;
@@ -58,8 +61,10 @@ public class PlayerHealth : MonoBehaviour, IDamage
     IEnumerator OnDead()
     {
         isDead = true;
-        //TODO fun blowy up stuff and a lose screen
-        yield return new WaitForSeconds(1f);
+        aud.PlayOneShot(explosionAudio, 0.4f);
+        explosionFX.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        GameManager.Instance.LoseMenu();
     }
 
     void ProcessLosingParts()
