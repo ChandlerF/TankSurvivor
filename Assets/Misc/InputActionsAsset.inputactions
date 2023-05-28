@@ -58,6 +58,15 @@
                     "processors": "",
                     "interactions": "Hold",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "MachineGunFire",
+                    "type": "Button",
+                    "id": "c5e32a2d-ed02-40ef-94af-732224b1e2b2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -338,6 +347,28 @@
                 },
                 {
                     "name": "",
+                    "id": "48b9d12e-310d-46b1-8ab4-f712dfdbc983",
+                    "path": "<XInputController>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "af98876f-79a9-4ece-9b21-6e47fd2d4bb4",
+                    "path": "<DualShockGamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "c37cd89b-81d0-4946-ab10-9996ff35f0d3",
                     "path": "<Mouse>/position",
                     "interactions": "",
@@ -397,7 +428,7 @@
                     "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keyboard&Mouse",
                     "action": "SecondaryFire",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -410,6 +441,50 @@
                     "processors": "",
                     "groups": "",
                     "action": "SecondaryFire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1bbc8e53-7d0b-4a63-bf40-f435f84feffe",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "Press(behavior=2)",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "MachineGunFire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3719c426-4a38-484a-a6d7-05a259014617",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "Press(behavior=2)",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "MachineGunFire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5a6ec172-3d7c-4418-94c5-4198a1dd2ca9",
+                    "path": "<DualShockGamepad>/rightShoulder",
+                    "interactions": "Press(behavior=2)",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "MachineGunFire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0cb4f7c5-b58b-4ca3-9f09-38799f08c89b",
+                    "path": "<XInputController>/rightShoulder",
+                    "interactions": "Press(behavior=2)",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "MachineGunFire",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

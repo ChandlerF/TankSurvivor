@@ -675,7 +675,6 @@ MonoBehaviour:
   loseMenu: {fileID: 992785452381408431}
   winMenu: {fileID: 992785451889580940}
   aud: {fileID: 992785451114785999}
-  music: {fileID: 0}
 --- !u!82 &992785451114785999
 AudioSource:
   m_ObjectHideFlags: 0
@@ -686,9 +685,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: d4e607403471d594da63ddbaaa7bf10c, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0
