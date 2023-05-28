@@ -342,6 +342,9 @@ MonoBehaviour:
   - {fileID: 594910394757671960}
   - {fileID: 594910398457400200}
   - {fileID: 594910395237627398}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 2048
 --- !u!58 &954357935
 CircleCollider2D:
   m_ObjectHideFlags: 0

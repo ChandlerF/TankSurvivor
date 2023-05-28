@@ -23,7 +23,7 @@ public class TurretAI : MonoBehaviour, IDamage
     [SerializeField] AudioClip shootAudio;
     [SerializeField] MeshRenderer[] turretBodyParts;
 
-
+    [SerializeField] LayerMask layerMask;
     GameObject player;
     Transform playerTransform;
 
@@ -43,12 +43,17 @@ public class TurretAI : MonoBehaviour, IDamage
     }
     private void LateUpdate()
     {
-        StartRotating();
         if (Vector3.Distance(playerTransform.position, transform.position) <= attackDistance)
         {
-            if (!isShooting && !isExploding)
+            StartRotating();
+            RaycastHit2D hit = Physics2D.Raycast(shootPos.position, (playerTransform.position - transform.position).normalized, Mathf.Infinity);
+            if (hit.transform.CompareTag("Player"))
             {
-                StartCoroutine(ShootPlayer());
+                Debug.DrawLine(transform.position, hit.transform.position, Color.blue);
+                if (!isShooting && !isExploding)
+                {
+                    StartCoroutine(ShootPlayer());
+                }
             }
         }
     }
