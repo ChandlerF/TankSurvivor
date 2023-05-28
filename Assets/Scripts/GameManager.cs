@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
     [Header("Game Audio")]
     [SerializeField] AudioSource aud;
 
+    [SerializeField] bool isMainMenu;
+
     bool isTransitioning;
     bool isPaused;
     bool isDead;
@@ -49,21 +51,33 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-        _timeScaleDefault = Time.timeScale;
-
-        player = GameObject.FindGameObjectWithTag("Player");
-        player.TryGetComponent<ProjectileSpawner>(out shoot);
-        player.TryGetComponent<PlayerMovement>(out movement);
-        Cursor.lockState = CursorLockMode.Confined;
-        Cursor.visible = false;
-
         levelIndex = SceneManager.GetActiveScene().buildIndex;
+        isMainMenu = levelIndex == 0;
+        //if this isn't the main menu scene
+        if(!isMainMenu)
+        {
+            _timeScaleDefault = Time.timeScale;
+
+            player = GameObject.FindGameObjectWithTag("Player");
+            player.TryGetComponent<ProjectileSpawner>(out shoot);
+            player.TryGetComponent<PlayerMovement>(out movement);
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = false;
+        }
+        else
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.Confined;
+        }
         aud.Play();
     }
 
     private void OnEnable()
     {
-        menu.action.performed += PauseMenu;
+        if(!isMainMenu)
+        {
+            menu.action.performed += PauseMenu;
+        }
     }
     public void PauseMenu(InputAction.CallbackContext obj)
     {
@@ -157,5 +171,13 @@ public class GameManager : MonoBehaviour
         }
         ResumeState();
         SceneManager.LoadScene(0);
+    }
+    public void LoadFirstScene()
+    {
+        if(!isMainMenu)
+        {
+            ResumeState();
+        }
+        SceneManager.LoadScene(levelIndex + 1);
     }
 }

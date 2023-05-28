@@ -45,7 +45,7 @@ public class ProjectileSpawner : MonoBehaviour
     IEnumerator Shoot()
     {
         isShooting = true;
-        CinemachineShake.Instance.ShakeCamera(1.5f, 0.15f);
+        CinemachineShake.Instance.ShakeCamera(1.5f, 0.25f);
         muzzleFlash.SetActive(true);
         aud.PlayOneShot(shootAud, 0.3f);
         GameObject projectileClone = Instantiate(projectilePrefab.gameObject, shootPos.position, shootPos.rotation);
