@@ -13,6 +13,8 @@ public class PlayerHealth : MonoBehaviour, IDamage
     [SerializeField] AudioSource aud;
     [SerializeField] AudioClip explosionAudio;
     [SerializeField] GameObject explosionFX;
+    [SerializeField] SpriteRenderer[] playerSprites;
+
 
     int HPtoBeCompared;
     int numPartsLost = 0;
@@ -21,6 +23,13 @@ public class PlayerHealth : MonoBehaviour, IDamage
 
     void Start()
     {
+        for (int i = 0; i < playerSprites.Length; i++)
+        {
+            if (!playerSprites[i].enabled)
+            {
+                playerSprites[i].enabled = true;
+            }
+        }
         HPtoBeCompared = HP;
         SetMaxHealth(HP);
     }
@@ -37,6 +46,10 @@ public class PlayerHealth : MonoBehaviour, IDamage
         {
             SetHealth(HP);
             CinemachineShake.Instance.ShakeCamera(1f, 0.5f);
+            for(int i = 0; i < playerSprites.Length; i++)
+            {
+                playerSprites[i].enabled = false;
+            }
             StartCoroutine(OnDead());
         }
         //Here if the incremental damage set in the inspector has been satisfied
@@ -63,7 +76,7 @@ public class PlayerHealth : MonoBehaviour, IDamage
         isDead = true;
         aud.PlayOneShot(explosionAudio, 0.4f);
         explosionFX.SetActive(true);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         GameManager.Instance.LoseMenu();
     }
 
