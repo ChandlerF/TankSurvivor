@@ -21,6 +21,7 @@ public class TurretAI : MonoBehaviour, IDamage
     [SerializeField] AudioSource aud;
     [SerializeField] AudioClip explosion;
     [SerializeField] AudioClip shootAudio;
+    [SerializeField] SpriteRenderer[] turretBodyParts;
 
 
     GameObject player;
@@ -32,6 +33,13 @@ public class TurretAI : MonoBehaviour, IDamage
     {
         player = GameObject.FindGameObjectWithTag("Player");
         playerTransform = player.transform;
+        for (int i = 0; i < turretBodyParts.Length; i++)
+        {
+            if (!turretBodyParts[i].enabled)
+            {
+                turretBodyParts[i].enabled = true;
+            }
+        }
     }
     private void LateUpdate()
     {
@@ -83,6 +91,10 @@ public class TurretAI : MonoBehaviour, IDamage
     IEnumerator ProcessExplosion()
     {
         isExploding = true;
+        for(int i = 0; i < turretBodyParts.Length; i++)
+        {
+            turretBodyParts[i].enabled = false;
+        }
         if (isExploding)
         {
             for (int i = 0; i < particles.Length; i++)
