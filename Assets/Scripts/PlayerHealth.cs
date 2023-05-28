@@ -14,8 +14,9 @@ public class PlayerHealth : MonoBehaviour, IDamage
     [SerializeField] AudioClip explosionAudio;
     [SerializeField] GameObject explosionFX;
     [SerializeField] SpriteRenderer[] playerSprites;
+    [SerializeField] MachineGunFire[] machineGuns;
 
-
+    [SerializeField] bool isMachineGunActive = true;
     int HPtoBeCompared;
     int numPartsLost = 0;
     const int MAX_PARTS = 4;
@@ -30,6 +31,7 @@ public class PlayerHealth : MonoBehaviour, IDamage
                 playerSprites[i].enabled = true;
             }
         }
+        ActivateMachineGuns(isMachineGunActive);
         HPtoBeCompared = HP;
         SetMaxHealth(HP);
     }
@@ -46,10 +48,11 @@ public class PlayerHealth : MonoBehaviour, IDamage
         {
             SetHealth(HP);
             CinemachineShake.Instance.ShakeCamera(1f, 0.5f);
-            for(int i = 0; i < playerSprites.Length; i++)
+            for (int i = 0; i < playerSprites.Length; i++)
             {
                 playerSprites[i].enabled = false;
             }
+            ActivateMachineGuns(false);
             StartCoroutine(OnDead());
         }
         //Here if the incremental damage set in the inspector has been satisfied
@@ -58,6 +61,14 @@ public class PlayerHealth : MonoBehaviour, IDamage
             !lostPart && !isDead && numPartsLost < MAX_PARTS)
         {
             StartCoroutine(LoseAPart());
+        }
+    }
+
+    private void ActivateMachineGuns(bool isActive)
+    {
+        for (int i = 0; i < machineGuns.Length; i++)
+        {
+            machineGuns[i].enabled = isActive;
         }
     }
 
