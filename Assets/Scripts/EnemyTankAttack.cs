@@ -28,9 +28,14 @@ public class EnemyTankAttack : MonoBehaviour
         if(!waypoints.IsFollowingWaypoints)
         {
             LookAt();
-            if(!isShooting && !healthSystem.IsDead)
+            RaycastHit2D hit = Physics2D.Raycast(shootPos.position, (player.transform.position - transform.position).normalized, Mathf.Infinity);
+            if (hit.transform.CompareTag("Player"))
             {
-                StartCoroutine(ShootPlayer());
+                Debug.DrawLine(transform.position, hit.transform.position, Color.blue);
+                if (!isShooting)
+                {
+                    StartCoroutine(ShootPlayer());
+                }
             }
         }
     }
