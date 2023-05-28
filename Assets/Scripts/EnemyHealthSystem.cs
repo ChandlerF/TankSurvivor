@@ -6,6 +6,7 @@ public class EnemyHealthSystem : MonoBehaviour, IDamage
 {
     [Header("Components")]
     [SerializeField] GameObject explosionFX;
+    [SerializeField] ParticleSystem[] damageFX;
     [SerializeField] AudioSource aud;
     [SerializeField] AudioClip explosion;
     [SerializeField] SpriteRenderer bodyRenderer;
@@ -25,6 +26,7 @@ public class EnemyHealthSystem : MonoBehaviour, IDamage
         if(!isDead)
         {
             HP -= amount;
+            StartCoroutine(ProcessDamage());
         }
         if(HP <= 0 && !isDead)
         {
@@ -48,5 +50,15 @@ public class EnemyHealthSystem : MonoBehaviour, IDamage
         {
             Destroy(gameObject);
         }
+    }
+
+    IEnumerator ProcessDamage()
+    {
+        int damageFXToPlay = Random.Range(0, damageFX.Length - 1);
+        damageFX[damageFXToPlay].Play();
+        damageFX[damageFXToPlay + 1].Play();
+        yield return new WaitForSeconds(0.25f);
+        damageFX[damageFXToPlay].Stop();
+        damageFX[damageFXToPlay + 1].Stop();
     }
 }
