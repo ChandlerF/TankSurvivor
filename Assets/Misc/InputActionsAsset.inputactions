@@ -404,7 +404,7 @@
                     "name": "",
                     "id": "8815082d-65dc-41ef-bf45-0699328aa397",
                     "path": "<Keyboard>/space",
-                    "interactions": "",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Jump",

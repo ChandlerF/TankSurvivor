@@ -13,6 +13,7 @@ public class EnemyHealthSystem : MonoBehaviour, IDamage
 
     [Header("Stats")]
     [SerializeField, Range(0, 50)] int HP = 15;
+    [SerializeField] bool isBoss;
 
     bool isDead;
     public bool IsDead
@@ -39,6 +40,13 @@ public class EnemyHealthSystem : MonoBehaviour, IDamage
         explosionFX.SetActive(true);
         aud.PlayOneShot(explosion);
         yield return new WaitForSeconds(1f);
-        Destroy(gameObject);
+        if(isBoss)
+        {
+            GameManager.Instance.BossDied();
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 }

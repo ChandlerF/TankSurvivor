@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -5,9 +7,12 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField, Range(0.01f, 5f)] float _moveSpeed = 1f;
     [SerializeField] InputActionReference pointPosition;
+    [SerializeField] InputActionReference dash;
     [SerializeField] Transform tankBody;
     [SerializeField] Transform tankHull;
     [SerializeField] float bodyRotateSpeed;
+    [SerializeField, Range(0, 1)] float boostDuration;
+    [SerializeField] bool boostEnabled = true;
 
     private Vector2 pointPos;
     private Vector2 _moveInput;
@@ -19,15 +24,51 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private TankDamageSystem _tankDamageSystem;
 
+    float originalMoveSpeed;
+    float timer;
+    bool isBoosted;
+    private float boostRefreshDelay = 0.5f;
 
-    private void Start()
+    private void OnEnable()
     {
-        _rbBody = tankBody.GetComponent<Rigidbody2D>();
-        _rbHull = tankHull.GetComponent<Rigidbody2D>();
+        if (boostEnabled)
+        {
+            dash.action.performed += Dash;
+        }
     }
 
+    private void OnDisable()
+    {
+        if(boostEnabled)
+        {
+            dash.action.performed -= Dash;
+        }
+    }
+    private void Start()
+    {
+        timer = 0;
+        _rbBody = tankBody.GetComponent<Rigidbody2D>();
+        _rbHull = tankHull.GetComponent<Rigidbody2D>();
+        originalMoveSpeed = _moveSpeed;
+    }
     private void FixedUpdate()
     {
+        if(isBoosted)
+        {
+            if(timer <= boostDuration)
+            {
+                timer += Time.deltaTime;
+            }
+            else
+            {
+                isBoosted = false;
+                _moveSpeed = originalMoveSpeed;
+                if (timer >= Mathf.Epsilon)
+                {
+                    timer = 0;
+                }
+            }
+        }
         SmoothMovement();
         RotateInDirectionOfInput();
 
@@ -99,5 +140,15 @@ public class PlayerMovement : MonoBehaviour
     private void OnSecondaryFire()
     {
         _tankDamageSystem.TankToPlayer(_tankDamageSystem.gameObject, true);
+    }
+
+    private void Dash(InputAction.CallbackContext obj)
+    {
+        isBoosted = true;
+        _moveSpeed *= 5;
+    }
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(boostRefreshDelay);
     }
 }

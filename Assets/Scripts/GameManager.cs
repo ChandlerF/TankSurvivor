@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
     public bool IsDead { get {  return isDead; } }
     public bool DidWin { get { return didWin; } }
 
+    int waveCount;
     int levelIndex;
     float _timeScaleDefault;
 
@@ -179,5 +180,10 @@ public class GameManager : MonoBehaviour
             ResumeState();
         }
         SceneManager.LoadScene(levelIndex + 1);
+    }
+
+    public void BossDied()
+    {
+        WinMenu();
     }
 }

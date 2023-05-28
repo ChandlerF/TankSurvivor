@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: HP
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 1859064093294883595, guid: 090adaf275d69924c8b1f1007e433104, type: 3}
+      propertyPath: isBoss
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3461011931198763731, guid: 090adaf275d69924c8b1f1007e433104, type: 3}
       propertyPath: m_LocalScale.x
       value: 50
@@ -25,7 +29,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4998108588528922146, guid: 090adaf275d69924c8b1f1007e433104, type: 3}
       propertyPath: m_Name
-      value: EnemyTankBoss
+      value: EnemyTankHeavy
       objectReference: {fileID: 0}
     - target: {fileID: 4998108588528922151, guid: 090adaf275d69924c8b1f1007e433104, type: 3}
       propertyPath: m_RootOrder

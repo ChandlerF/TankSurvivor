@@ -199,10 +199,15 @@ MonoBehaviour:
   _shoot: {fileID: -2361362647159759701, guid: 51b39a6c9acae044f8c7f8a02d880b2c, type: 3}
   aud: {fileID: 1988942137}
   shootAud: {fileID: 8300000, guid: 75ac3eaf61a41d944a73c2632cc610f4, type: 3}
+  burnoutSound: {fileID: 8300000, guid: 69bbf8bcca8c8924991f1fd03c4be8f6, type: 3}
   muzzleFlash: {fileID: 8886137863772794358}
   projectileSpeed: 45
   shootRate: 0.01
   damage: 1
+  burnoutTime: 5
+  slider: {fileID: 0}
+  burnoutFill: {fileID: 0}
+  isTimerGun: 0
 --- !u!1 &286528801783665479
 GameObject:
   m_ObjectHideFlags: 0
@@ -391,10 +396,15 @@ MonoBehaviour:
   _shoot: {fileID: -2361362647159759701, guid: 51b39a6c9acae044f8c7f8a02d880b2c, type: 3}
   aud: {fileID: 1988942137}
   shootAud: {fileID: 8300000, guid: 75ac3eaf61a41d944a73c2632cc610f4, type: 3}
+  burnoutSound: {fileID: 8300000, guid: 69bbf8bcca8c8924991f1fd03c4be8f6, type: 3}
   muzzleFlash: {fileID: 8886137862367538230}
   projectileSpeed: 45
   shootRate: 0.01
   damage: 1
+  burnoutTime: 5
+  slider: {fileID: 0}
+  burnoutFill: {fileID: 0}
+  isTimerGun: 1
 --- !u!1 &5169688916181896423
 GameObject:
   m_ObjectHideFlags: 0
@@ -1109,6 +1119,10 @@ MonoBehaviour:
   - {fileID: 5968662521695480468}
   - {fileID: 7400093439991321456}
   - {fileID: 8887034378699959086}
+  - {fileID: 6406266149215340690}
+  - {fileID: 5382491131398635602}
+  machineGuns: []
+  isMachineGunActive: 1
 --- !u!50 &8887034380295443788
 Rigidbody2D:
   serializedVersion: 4
