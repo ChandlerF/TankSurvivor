@@ -17,12 +17,12 @@ TagManager:
   - 
   - Water
   - UI
-  - Projectile
-  - 
-  - 
+  - PlayerProjectile
+  - Enemy
+  - EnemyProjectile
   - Tank
-  - 
-  - 
+  - MiniMap
+  - Player
   - 
   - 
   - 
