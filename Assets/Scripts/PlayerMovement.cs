@@ -63,11 +63,12 @@ public class PlayerMovement : MonoBehaviour
             {
                 isBoosted = false;
                 _moveSpeed = originalMoveSpeed;
-                if (timer >= Mathf.Epsilon)
-                {
-                    timer = 0;
-                }
+
             }
+        }
+        if (!isBoosted && timer >= 0)
+        {
+            timer -= Time.deltaTime;
         }
         SmoothMovement();
         RotateInDirectionOfInput();
@@ -144,8 +145,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void Dash(InputAction.CallbackContext obj)
     {
-        isBoosted = true;
-        _moveSpeed *= 5;
+        if(timer <= Mathf.Epsilon)
+        {
+            isBoosted = true;
+            _moveSpeed *= 5;
+        }
     }
     IEnumerator Wait()
     {
