@@ -42,11 +42,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4998108588528922151}
   - component: {fileID: 4998108588528922157}
+  - component: {fileID: 1859064093294883595}
   - component: {fileID: 4998108588528922159}
   - component: {fileID: 4998108588528922150}
   - component: {fileID: 4998108588528922148}
   - component: {fileID: 4998108588528922156}
-  - component: {fileID: 1859064093294883595}
   - component: {fileID: 2881491486007926003}
   m_Layer: 7
   m_Name: EnemyTank
@@ -88,7 +88,25 @@ MonoBehaviour:
   rotateSpeed: 180
   moveSpeed: 3
   maxWaypointDistanceBuffer: 0.1
-  maxDistanceToPlayer: 5
+  maxDistanceToPlayer: 15
+--- !u!114 &1859064093294883595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4998108588528922146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b8cf422fba45ef459885604ef4712f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionFX: {fileID: 127850976165354033}
+  aud: {fileID: 2881491486007926003}
+  explosion: {fileID: 8300000, guid: 2643fda6554b3f4419d1c201bacf7269, type: 3}
+  bodyRenderer: {fileID: 4998108589432371688}
+  hullRenderer: {fileID: 4998108589084217412}
+  HP: 15
 --- !u!114 &4998108588528922159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,24 +272,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1859064093294883595
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4998108588528922146}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b8cf422fba45ef459885604ef4712f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  explosionFX: {fileID: 127850976165354033}
-  aud: {fileID: 2881491486007926003}
-  explosion: {fileID: 8300000, guid: 2643fda6554b3f4419d1c201bacf7269, type: 3}
-  bodyRenderer: {fileID: 4998108589432371688}
-  hullRenderer: {fileID: 4998108589084217412}
-  HP: 15
 --- !u!82 &2881491486007926003
 AudioSource:
   m_ObjectHideFlags: 0

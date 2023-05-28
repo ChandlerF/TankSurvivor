@@ -342,7 +342,7 @@
                     "path": "<Mouse>/position",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keyboard&Mouse",
                     "action": "Follow",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -353,7 +353,7 @@
                     "path": "<Gamepad>/rightStick",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Gamepad",
                     "action": "Follow",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -364,7 +364,7 @@
                     "path": "<Touchscreen>/position",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Touch",
                     "action": "Follow",
                     "isComposite": false,
                     "isPartOfComposite": false

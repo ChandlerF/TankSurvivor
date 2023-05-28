@@ -20,7 +20,6 @@ public class GameManager : MonoBehaviour
 
     [Header("Game Audio")]
     [SerializeField] AudioSource aud;
-    [SerializeField] AudioClip music;
 
     bool isTransitioning;
     bool isPaused;
@@ -59,6 +58,7 @@ public class GameManager : MonoBehaviour
         Cursor.visible = false;
 
         levelIndex = SceneManager.GetActiveScene().buildIndex;
+        aud.Play();
     }
 
     private void OnEnable()

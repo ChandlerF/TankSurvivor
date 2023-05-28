@@ -323,11 +323,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c0b217ce9405744b9d688f7926a298a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDistance: 6
+  attackDistance: 14
   bulletSpeed: 30
   shootRate: 0.5
   turnSpeed: 1
-  HP: 5
+  HP: 15
   shootPosParent: {fileID: 584914092175414690}
   animator: {fileID: 667025031816888364}
   bullet: {fileID: 3877601139503051133, guid: 2265ca1a96d5a3b4089563a764ab5ad8, type: 3}
@@ -338,6 +338,10 @@ MonoBehaviour:
   aud: {fileID: 954357937}
   explosion: {fileID: 8300000, guid: 2643fda6554b3f4419d1c201bacf7269, type: 3}
   shootAudio: {fileID: 8300000, guid: 1ed471d97123e3d4a9fa8602e4b3f214, type: 3}
+  turretBodyParts:
+  - {fileID: 594910394757671960}
+  - {fileID: 594910398457400200}
+  - {fileID: 594910395237627398}
 --- !u!58 &954357935
 CircleCollider2D:
   m_ObjectHideFlags: 0

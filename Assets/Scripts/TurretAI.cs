@@ -21,7 +21,7 @@ public class TurretAI : MonoBehaviour, IDamage
     [SerializeField] AudioSource aud;
     [SerializeField] AudioClip explosion;
     [SerializeField] AudioClip shootAudio;
-    [SerializeField] SpriteRenderer[] turretBodyParts;
+    [SerializeField] MeshRenderer[] turretBodyParts;
 
 
     GameObject player;
