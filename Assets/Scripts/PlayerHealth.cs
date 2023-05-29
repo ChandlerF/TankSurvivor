@@ -139,7 +139,11 @@ public class PlayerHealth : MonoBehaviour, IDamage
                                  TankDamageSystem.Instance.Guards);
         if (allPartsReplaced)
         {
-            HP = HPtoBeCompared;
+            HP += HPtoBeCompared / 5;
+            if(HP >= HPtoBeCompared)
+            {
+                HP = HPtoBeCompared;
+            }
             SetHealth(HP);
         }
     }
