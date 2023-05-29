@@ -1688,7 +1688,7 @@ Transform:
   m_GameObject: {fileID: 304885832}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -27.664919, y: -8.530512, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1634287470}
@@ -2971,7 +2971,7 @@ Transform:
   m_GameObject: {fileID: 603082393}
   m_LocalRotation: {x: 0, y: 0, z: 0.94818515, w: 0.31771845}
   m_LocalPosition: {x: -36.31, y: -13.33, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 560930381}
@@ -6619,7 +6619,7 @@ Transform:
   m_GameObject: {fileID: 1294104355}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -24.71, y: -4.25, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 560930381}
@@ -6969,7 +6969,7 @@ Transform:
   m_GameObject: {fileID: 1379060274}
   m_LocalRotation: {x: 0, y: 0, z: -0.33034962, w: 0.9438587}
   m_LocalPosition: {x: -31.12, y: -11.67, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 560930381}
@@ -10157,7 +10157,7 @@ Transform:
   m_GameObject: {fileID: 1966117983}
   m_LocalRotation: {x: 0, y: 0, z: -0.5455169, w: 0.83809984}
   m_LocalPosition: {x: -37.130016, y: -4.9076467, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 560930381}
@@ -10831,7 +10831,7 @@ Transform:
   m_GameObject: {fileID: 2055733337}
   m_LocalRotation: {x: 0, y: 0, z: -0.21004522, w: 0.9776917}
   m_LocalPosition: {x: -25.16, y: -8.33, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 597369363}
@@ -12526,6 +12526,10 @@ PrefabInstance:
       propertyPath: _desertMap3D
       value: 
       objectReference: {fileID: 5500345011116843468}
+    - target: {fileID: 1890578207183809871, guid: 75b9158554da30446a571f8eb103c509, type: 3}
+      propertyPath: _tankGraveyard
+      value: 
+      objectReference: {fileID: 560930380}
     - target: {fileID: 1890578207183809871, guid: 75b9158554da30446a571f8eb103c509, type: 3}
       propertyPath: _virtualCamera
       value: 

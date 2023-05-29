@@ -16,7 +16,7 @@ public class TankDamageSystem : MonoBehaviour
 
     [SerializeField] private Material _repairableMat;
     [SerializeField] private PlayerInput _tankMovement, _playerMovement;
-    [SerializeField] private GameObject _tankModel, _desertMap3D, _playerFPS, _reticle, _trailRenderer;
+    [SerializeField] private GameObject _tankModel, _desertMap3D, _playerFPS, _reticle, _trailRenderer, _tankGraveyard;
     [SerializeField] private CinemachineVirtualCamera _virtualCamera;
     [SerializeField] private ProjectileSpawner _projectileSpawner;
     [SerializeField] private PlayerMovement _tankMovementOrtho;
@@ -159,6 +159,7 @@ public class TankDamageSystem : MonoBehaviour
         _desertMap3D.SetActive(_bool);
         _reticle.SetActive(!_bool);
         _trailRenderer.SetActive(!_bool);
+        _tankGraveyard.SetActive(!_bool);
 
 
         for (int i = 0; i < _tank2D.Length; i++)
