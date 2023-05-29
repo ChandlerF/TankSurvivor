@@ -15,10 +15,11 @@ public class ReticleMouseFollow : MonoBehaviour
     }
     private void Update()
     {
-        FollowMouse();
+        FollowMouseOldInput();
+        //FollowMouseNewInput();
     }
 
-    private void FollowMouse()
+    private void FollowMouseNewInput()
     {
         //Grab mouse/right stick/touch position based on camview
         reticlePos = _reticlePosition.action.ReadValue<Vector2>();
@@ -29,10 +30,16 @@ public class ReticleMouseFollow : MonoBehaviour
         reticleWorldPos.z = mainCam.nearClipPlane;
         //move the reticle
         transform.position = reticleWorldPos;
+        Debug.Log("Mouse Pos: " + reticlePos);
 
     }
 
-
+    void FollowMouseOldInput()
+    {
+        Vector3 reticlePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        reticlePos.z = 0f;
+        transform.position = reticlePos;
+    }
 
 
     /*

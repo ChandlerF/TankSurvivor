@@ -40,7 +40,7 @@ public class MachineGunFire : MonoBehaviour
         burnoutFillDefaultColor = burnoutFill.color;
 
     }
-    void OnEnable()
+/*    void OnEnable()
     {
         _shoot.action.performed += Spawn;
     }
@@ -48,10 +48,29 @@ public class MachineGunFire : MonoBehaviour
     void OnDisable()
     {
         _shoot.action.performed -= Spawn;
-    }
+    }*/
     private void Update()
     {
-        if(held && !isBurnt)
+        if(Input.GetMouseButton(1) && !isBurnt)
+        {
+            if (!isShooting)
+            {
+                StartCoroutine(Shoot());
+            }
+            BurnoutCountdown();
+            UpdateUI(isTimerGun);
+        }
+        if(isBurnt || (!isBurnt && !Input.GetMouseButton(1)) && timer >= Mathf.Epsilon)
+        {
+            if(!isShooting)
+            {
+                StartCoroutine(Shoot());
+            }
+            BurnoutReset();
+            UpdateUI(isTimerGun);
+        }
+
+/*        if(held && !isBurnt)
         {
             BurnoutCountdown();
             UpdateUI(isTimerGun);
@@ -60,7 +79,7 @@ public class MachineGunFire : MonoBehaviour
         {
             BurnoutReset();
             UpdateUI(isTimerGun);
-        }
+        }*/
     }
 
     private void BurnoutCountdown()
@@ -102,7 +121,7 @@ public class MachineGunFire : MonoBehaviour
 
     IEnumerator Shoot()
     {
-        while (held && !isBurnt)
+        while (Input.GetMouseButton(1) && !isBurnt)
         {
             isShooting = true;
             muzzleFlash.SetActive(true);
