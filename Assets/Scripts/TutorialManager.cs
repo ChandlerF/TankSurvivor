@@ -4,9 +4,12 @@ using TMPro;
 
 public class TutorialManager : MonoBehaviour
 {
-    [SerializeField] TMPro.TextMeshProUGUI text;
+    [SerializeField] TMPro.TextMeshProUGUI messageText;
+    [SerializeField] TextWriter textWriter;
 
-
-
+    private void Start()
+    {
+        textWriter.AddWriter(messageText, "Welcome to Tank Survivor!", 0.1f);
+    }
 
 }
