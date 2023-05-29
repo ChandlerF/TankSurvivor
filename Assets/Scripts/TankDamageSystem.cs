@@ -68,7 +68,7 @@ public class TankDamageSystem : MonoBehaviour
    
     public bool CanRepair(GameObject heldPart, GameObject brokenPart)
     {
-        if (heldPart.CompareTag(brokenPart.tag)) return true;
+        if (heldPart.CompareTag(brokenPart.tag) || heldPart.CompareTag("TankHull")) return true;
         else return false;
     }
 
