@@ -2137,6 +2137,42 @@ PrefabInstance:
       propertyPath: _projectileSpawner
       value: 
       objectReference: {fileID: 8887034380295443791}
+    - target: {fileID: 7019344294770757966, guid: 11688cb3856db244b9e134f594ecb9c7, type: 3}
+      propertyPath: _tank2D.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7019344294770757966, guid: 11688cb3856db244b9e134f594ecb9c7, type: 3}
+      propertyPath: _gunFire.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7019344294770757966, guid: 11688cb3856db244b9e134f594ecb9c7, type: 3}
+      propertyPath: _tank2D.Array.data[0]
+      value: 
+      objectReference: {fileID: 8887034379048059522}
+    - target: {fileID: 7019344294770757966, guid: 11688cb3856db244b9e134f594ecb9c7, type: 3}
+      propertyPath: _tank2D.Array.data[1]
+      value: 
+      objectReference: {fileID: 7400093439991321456}
+    - target: {fileID: 7019344294770757966, guid: 11688cb3856db244b9e134f594ecb9c7, type: 3}
+      propertyPath: _tank2D.Array.data[2]
+      value: 
+      objectReference: {fileID: 8887034378699959086}
+    - target: {fileID: 7019344294770757966, guid: 11688cb3856db244b9e134f594ecb9c7, type: 3}
+      propertyPath: _tank2D.Array.data[3]
+      value: 
+      objectReference: {fileID: 6406266149215340690}
+    - target: {fileID: 7019344294770757966, guid: 11688cb3856db244b9e134f594ecb9c7, type: 3}
+      propertyPath: _tank2D.Array.data[4]
+      value: 
+      objectReference: {fileID: 5382491131398635602}
+    - target: {fileID: 7019344294770757966, guid: 11688cb3856db244b9e134f594ecb9c7, type: 3}
+      propertyPath: _gunFire.Array.data[0]
+      value: 
+      objectReference: {fileID: 8887034378526215296}
+    - target: {fileID: 7019344294770757966, guid: 11688cb3856db244b9e134f594ecb9c7, type: 3}
+      propertyPath: _gunFire.Array.data[1]
+      value: 
+      objectReference: {fileID: 8887034378526215295}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11688cb3856db244b9e134f594ecb9c7, type: 3}
 --- !u!114 &1890578207183809871 stripped
