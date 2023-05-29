@@ -12,6 +12,10 @@ public class TutorialManager : MonoBehaviour
     bool isWriting;
     bool isFinished;
 
+    private void Awake()
+    {
+        Time.timeScale = 1.0f;
+    }
     private void Start()
     {
         StartCoroutine(Tutorial());
