@@ -66,7 +66,7 @@ public class PlayerHealth : MonoBehaviour, IDamage
                 HP -= amount;
             }
             SetHealth(HP);
-            CinemachineShake.Instance.ShakeCamera(1f, 0.5f);
+            CinemachineShake.Instance.ShakeCamera(0.8f, 0.4f);
         }
         else if (HP <= 0 && !isDead)
         {

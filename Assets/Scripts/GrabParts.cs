@@ -18,6 +18,7 @@ public class GrabParts : MonoBehaviour
                 _hitInfo.transform.CompareTag("TankHead"))
             {
 
+                Debug.Log("Fire");
                 _hitInfo.transform.TryGetComponent<BoxCollider>(out BoxCollider boxCollider);
 
                 if (!_isHolding && _hitInfo.transform.TryGetComponent<Rigidbody>(out _))
@@ -36,18 +37,24 @@ public class GrabParts : MonoBehaviour
     {
         if (Physics.SphereCast(Camera.main.transform.position, 0.7f, Camera.main.transform.forward, out _hitInfo, 6.0f))
         {
-            {
+            if (_hitInfo.transform.CompareTag("TankBarrel") ||
+                _hitInfo.transform.CompareTag("TankTracks") ||
+                _hitInfo.transform.CompareTag("TankWheelGuard") ||
+                _hitInfo.transform.CompareTag("TankHead") ||
+                _hitInfo.transform.CompareTag("TankRepair"))
+            
+                {
 
                 TankDamageSystem.Instance.TankToPlayer(TankDamageSystem.Instance.TankMovement,  false);
 
-            }
+                }
         }
     }
 
 
 
         private void PickupPart()
-    {
+        {
         _isHolding = true;
 
         _heldPart = _hitInfo.transform.gameObject;
@@ -58,16 +65,22 @@ public class GrabParts : MonoBehaviour
 
         _hitInfo.transform.SetParent(transform);
         _hitInfo.transform.position = _holdPos.transform.position;
-    }
+        }
 
 
 
     private void RepairPart()
     {
+        Debug.Log(_heldPart.tag + _hitInfo.transform.gameObject.tag);
         if(!TankDamageSystem.Instance.CanRepair(_heldPart, _hitInfo.transform.gameObject)) 
         {
             return;
         }
+
+       /* if (!_hitInfo.transform.gameObject.CompareTag("TankRepair"))
+        {
+            return;
+        }*/
 
         //Progress Bar?
         TankDamageSystem.Instance.RepairPart( _hitInfo.transform.gameObject, _heldPart);
