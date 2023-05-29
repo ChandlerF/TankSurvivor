@@ -15,6 +15,6 @@ public class TankPartsGravity : MonoBehaviour
 
     void FixedUpdate()
     {
-        _rb.AddForce(new Vector3(0, 0, 15.0f));
+        _rb.AddForce(new Vector3(0, 0, 20.0f));
     }
 }

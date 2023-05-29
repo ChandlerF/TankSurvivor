@@ -429,13 +429,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3310908525593467655}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 1.231, y: -0.15, z: 3.94}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8887034379048059523}
-  m_RootOrder: 6
+  m_Father: {fileID: 8270618460714763196}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!96 &6716198929710978133
 TrailRenderer:
@@ -798,6 +798,39 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &7205045294906984443
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8270618460714763196}
+  m_Layer: 11
+  m_Name: Trails
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8270618460714763196
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7205045294906984443}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 786667299455058451}
+  - {fileID: 5740785065572456083}
+  m_Father: {fileID: 8887034379048059523}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7594968625899379011
 GameObject:
   m_ObjectHideFlags: 0
@@ -822,13 +855,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7594968625899379011}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -1.252, y: -0.15, z: 3.94}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8887034379048059523}
-  m_RootOrder: 5
+  m_Father: {fileID: 8270618460714763196}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!96 &8081915483628537367
 TrailRenderer:
@@ -1057,8 +1090,7 @@ Transform:
   - {fileID: 2692232869950639124}
   - {fileID: 4378458736015025731}
   - {fileID: 6545653610539406058}
-  - {fileID: 786667299455058451}
-  - {fileID: 5740785065572456083}
+  - {fileID: 8270618460714763196}
   m_Father: {fileID: 8887034380295443789}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2093,6 +2125,10 @@ PrefabInstance:
       propertyPath: _tankMovement
       value: 
       objectReference: {fileID: 8887034380295443787}
+    - target: {fileID: 7019344294770757966, guid: 11688cb3856db244b9e134f594ecb9c7, type: 3}
+      propertyPath: _trailRenderer
+      value: 
+      objectReference: {fileID: 7205045294906984443}
     - target: {fileID: 7019344294770757966, guid: 11688cb3856db244b9e134f594ecb9c7, type: 3}
       propertyPath: _playerMovement
       value: 
