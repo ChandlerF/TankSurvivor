@@ -15,7 +15,10 @@ public class ReticleMouseFollow : MonoBehaviour
     }
     private void Update()
     {
-        FollowMouseOldInput();
+        if(TankDamageSystem.Instance.Head && TankDamageSystem.Instance.Barrel)
+        {
+            FollowMouseOldInput();
+        }
         //FollowMouseNewInput();
     }
 
