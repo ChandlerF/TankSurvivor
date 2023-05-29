@@ -22,12 +22,33 @@ public class ReticleMouseFollow : MonoBehaviour
     {
         //Grab mouse/right stick/touch position based on camview
         reticlePos = _reticlePosition.action.ReadValue<Vector2>();
-        //backoff the z for 2D
-        reticlePos.z = mainCam.nearClipPlane;
+        
         //Get the world spot
         reticleWorldPos = mainCam.ScreenToWorldPoint(reticlePos);
+        //backoff the z for 2D
+        reticleWorldPos.z = mainCam.nearClipPlane;
         //move the reticle
         transform.position = reticleWorldPos;
 
     }
+
+
+
+
+    /*
+    _renderer = GetComponent<SpriteRenderer>();
+        InvokeRepeating("CheckCamMode", 0, 2f);
+    private void CheckCamMode()
+    {
+
+        if (!mainCam.orthographic)
+        {
+            _renderer.enabled = false;
+            return;
+        }
+        else
+        {
+            _renderer.enabled = true;
+        }
+    }*/
 }

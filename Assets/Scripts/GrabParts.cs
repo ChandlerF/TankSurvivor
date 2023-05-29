@@ -31,14 +31,14 @@ public class GrabParts : MonoBehaviour
         }
     }
 
-    private void SecondaryFire()
+    private void OnSecondaryFire()
     {
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out _hitInfo, 5.0f))
         {
-            if (_hitInfo.transform.CompareTag("TankHull")) 
+            Debug.Log(_hitInfo.transform.tag);
             {
 
-                //Function to swap inside of tank
+                TankDamageSystem.Instance.TankToPlayer(TankDamageSystem.Instance.TankMovement,  false);
 
             }
         }
@@ -52,6 +52,7 @@ public class GrabParts : MonoBehaviour
 
         _heldPart = _hitInfo.transform.gameObject;
 
+        Destroy(_heldPart.GetComponent<TankPartsGravity>());
         Destroy(_heldPart.GetComponent<Rigidbody>());
         Destroy(_heldPart.GetComponent<BoxCollider>());
 
@@ -71,7 +72,5 @@ public class GrabParts : MonoBehaviour
         TankDamageSystem.Instance.RepairPart( _hitInfo.transform.gameObject, _heldPart);
 
         _isHolding = false;
-
-        Destroy(_heldPart);
     }
 }

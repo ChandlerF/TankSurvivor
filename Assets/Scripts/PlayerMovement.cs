@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Transform tankBody;
     [SerializeField] Transform tankHull;
     [SerializeField] float bodyRotateSpeed;
+    [SerializeField, Range(0.5f, 4f)] private float startBoostRefreshDelay = 1.5f;
     [SerializeField, Range(0, 1)] float boostDuration;
     [SerializeField] bool boostEnabled = true;
 
@@ -27,7 +28,8 @@ public class PlayerMovement : MonoBehaviour
     float originalMoveSpeed;
     float timer;
     bool isBoosted;
-    private float boostRefreshDelay = 0.5f;
+    
+    private float boostRefreshDelay;
 
     private void OnEnable()
     {
@@ -46,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Start()
     {
+        boostRefreshDelay = startBoostRefreshDelay;
         timer = 0;
         _rbBody = tankBody.GetComponent<Rigidbody2D>();
         _rbHull = tankHull.GetComponent<Rigidbody2D>();
@@ -55,10 +58,13 @@ public class PlayerMovement : MonoBehaviour
     {
         if(isBoosted)
         {
+            //Timer goes down while boosting
             if(timer <= boostDuration)
             {
                 timer += Time.deltaTime;
             }
+
+            //Boosting ends and speed resets
             else
             {
                 isBoosted = false;
@@ -66,10 +72,14 @@ public class PlayerMovement : MonoBehaviour
 
             }
         }
-        if (!isBoosted && timer >= 0)
+
+        //boost refresh timer starts
+        if (!isBoosted && boostRefreshDelay >= 0)
         {
-            timer -= Time.deltaTime;
+            boostRefreshDelay -= Time.deltaTime;
+            timer = 0f;
         }
+
         SmoothMovement();
         RotateInDirectionOfInput();
 
@@ -145,10 +155,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void Dash(InputAction.CallbackContext obj)
     {
-        if(timer <= Mathf.Epsilon)
+        if(boostRefreshDelay <= Mathf.Epsilon)
         {
             isBoosted = true;
-            _moveSpeed *= 5;
+            _moveSpeed *= 3.5f;
+            boostRefreshDelay = startBoostRefreshDelay;
         }
     }
     IEnumerator Wait()

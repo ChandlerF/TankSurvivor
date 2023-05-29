@@ -988,9 +988,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveSpeed: 4
   pointPosition: {fileID: 4579596721614300642, guid: 51b39a6c9acae044f8c7f8a02d880b2c, type: 3}
+  dash: {fileID: -8674922436885089284, guid: 51b39a6c9acae044f8c7f8a02d880b2c, type: 3}
   tankBody: {fileID: 8887034380295443789}
   tankHull: {fileID: 8887034379100966004}
   bodyRotateSpeed: 300
+  boostDuration: 0.255
+  boostEnabled: 1
   _tankDamageSystem: {fileID: 1890578207183809871}
 --- !u!114 &8887034380295443787
 MonoBehaviour:
@@ -1340,6 +1343,10 @@ PrefabInstance:
     - target: {fileID: 3123030004933738201, guid: 16cbb4476bad51f4fb958ca1fc57cd74, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3123030004933738202, guid: 16cbb4476bad51f4fb958ca1fc57cd74, type: 3}
+      propertyPath: jumpSpeed
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3123030005292053045, guid: 16cbb4476bad51f4fb958ca1fc57cd74, type: 3}
       propertyPath: m_Layer
@@ -1808,6 +1815,10 @@ PrefabInstance:
       propertyPath: _playerMovement
       value: 
       objectReference: {fileID: 4905647857761067022}
+    - target: {fileID: 7019344294770757966, guid: 11688cb3856db244b9e134f594ecb9c7, type: 3}
+      propertyPath: _projectileSpawner
+      value: 
+      objectReference: {fileID: 8887034380295443791}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11688cb3856db244b9e134f594ecb9c7, type: 3}
 --- !u!114 &1890578207183809871 stripped

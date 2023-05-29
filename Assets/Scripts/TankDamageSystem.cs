@@ -14,8 +14,11 @@ public class TankDamageSystem : MonoBehaviour
     [SerializeField] private Material _repairableMat;
 
     [SerializeField] private PlayerInput _tankMovement, _playerMovement;
-    [SerializeField] private GameObject _tankModel, _desertMap3D, _playerFPS;
+    [SerializeField] private GameObject _tankModel, _desertMap3D, _playerFPS, _reticle;
     [SerializeField] private CinemachineVirtualCamera _virtualCamera;
+    [SerializeField] private ProjectileSpawner _projectileSpawner;
+    public GameObject TankMovement;
+
 
 
    private void Awake()
@@ -28,6 +31,8 @@ public class TankDamageSystem : MonoBehaviour
         {
             Destroy(this);
         }
+
+        TankMovement = _tankMovement.gameObject;
     }
 
 
@@ -92,7 +97,11 @@ public class TankDamageSystem : MonoBehaviour
 
         Vector3 explosionOffset = new Vector3(Random.Range(-8.0f, 8.0f), Random.Range(0.1f, 3f), Random.Range(-8.0f, 8.0f));
 
-        Instantiate(prefab, original.transform.position, original.transform.rotation).AddComponent<Rigidbody>().AddExplosionForce(850f, original.transform.position - explosionOffset, 100f, 1f);
+        GameObject spawnedPart = Instantiate(prefab, original.transform.position, original.transform.rotation);
+        Rigidbody spawnedRB = spawnedPart.AddComponent<Rigidbody>();
+        spawnedRB.AddExplosionForce(850f, original.transform.position - explosionOffset, 100f, 1f);
+        spawnedRB.useGravity = false;
+        spawnedPart.AddComponent<TankPartsGravity>();
 
     }
 
@@ -104,6 +113,7 @@ public class TankDamageSystem : MonoBehaviour
         original.GetComponent<MeshRenderer>().material = prefab.GetComponent<MeshRenderer>().material;
         original.GetComponent<BoxCollider>().isTrigger = false;
 
+        Destroy(prefab);
     }
 
 
@@ -134,23 +144,23 @@ public class TankDamageSystem : MonoBehaviour
         _tankMovement.enabled = !_bool;
         _playerMovement.enabled = _bool;
 
-        //3D Models and Buildings
+        //Tank Shooting Script
+        _projectileSpawner.enabled = !_bool;
+
+        //3D Models, Reticle, and Buildings
         _tankModel.SetActive(_bool);
         _desertMap3D.SetActive(_bool);
+        _reticle.SetActive(!_bool);
 
+        //Change perspective of camera to go into first person
+        Camera.main.orthographic = !_bool;
 
         //Cinemachine, this is un-needed as the priority on the FPS virtual camera is higher
-       /* if(!_bool) _virtualCamera.Priority += 2;
-        else _virtualCamera.Priority -= 2;*/
+        if(_bool) _virtualCamera.Priority += 2;
+        else _virtualCamera.Priority -= 2;
 
         //Player FPS postion and active
         _playerFPS.SetActive(_bool);
         _playerFPS.transform.localPosition = new Vector3(0, 0, 1);
-    }
-
-
-    private void OnSecondaryFire()
-    {
-        TankToPlayer(_tankMovement.gameObject, false);
     }
 }

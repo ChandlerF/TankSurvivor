@@ -157,7 +157,12 @@ MonoBehaviour:
   Barrel: 1
   _repairableMat: {fileID: 2100000, guid: f6bcb75f058ec6d43a98ece6b78f2d73, type: 2}
   _tankMovement: {fileID: 0}
+  _playerMovement: {fileID: 0}
   _tankModel: {fileID: 6910612763626686007}
+  _desertMap3D: {fileID: 0}
+  _playerFPS: {fileID: 0}
+  _virtualCamera: {fileID: 0}
+  TankMovement: {fileID: 0}
 --- !u!114 &4558005742093851663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -396,7 +401,7 @@ GameObject:
   - component: {fileID: 8569641760345167194}
   m_Layer: 9
   m_Name: Hull.001
-  m_TagString: Untagged
+  m_TagString: TankHull
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

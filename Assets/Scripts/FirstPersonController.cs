@@ -10,7 +10,8 @@ public class FirstPersonController : MonoBehaviour
     public float walkingSpeed = 7.5f;
     public float jumpSpeed = 8.0f;
     public float gravity = 20.0f;
-    public Camera playerCamera;
+    // public Camera playerCamera;
+    [SerializeField] private GameObject _cameraPlaceHolder;
     public float lookSpeed = 2.0f;
     public float lookXLimit = 45.0f;
 
@@ -34,14 +35,10 @@ public class FirstPersonController : MonoBehaviour
     }
 
 
-    //-------------------------------------------------------------------------------------------------------------So I swapped most of this code for vector3 y   ->   vector3.z due to the player being sideways
-    //It still doesnt fullt work and I need to figure out cinemachine to get that working
-    //I also need to make the FollowMouse Function on PlayerMovement.cs be new input and hopefully add a reticle for controllers, then I need to keep the mouse from going off screen
-    //--------------------------------------------------------------------------------------------------------------------------
     void Update()
     {
         // We are grounded, so recalculate move direction based on axes
-        Vector3 forward = transform.TransformDirection(Vector3.up);
+        Vector3 forward = transform.TransformDirection(Vector3.forward);
         Vector3 right = transform.TransformDirection(Vector3.right);
 
         float curSpeedX = canMove ? (walkingSpeed * _moveInput.y) : 0;
@@ -50,9 +47,9 @@ public class FirstPersonController : MonoBehaviour
         moveDirection = (forward * curSpeedX) + (right * curSpeedY);
         moveDirection.z = _movementDirectionZ;
 
-        if (_isJump && canMove && characterController.isGrounded)
+        if (_isJump && canMove && IsGrounded())
          {
-             moveDirection.z = jumpSpeed;
+             moveDirection.z = -jumpSpeed;
             _isJump = false;
          }
          else
@@ -63,26 +60,34 @@ public class FirstPersonController : MonoBehaviour
         // Apply gravity. Gravity is multiplied by deltaTime twice (once here, and once below
         // when the moveDirection is multiplied by deltaTime). This is because gravity should be applied
         // as an acceleration (ms^-2)
-        if (!characterController.isGrounded)
+
+        if (!IsGrounded())
         {
-            moveDirection.z += gravity * Time.deltaTime;
+            if (moveDirection.z < 6f)
+            {
+                moveDirection.z += gravity * Time.deltaTime;
+            }
         }
 
         // Move the controller
         characterController.Move(moveDirection * Time.deltaTime);
 
         // Player and Camera rotation
-        if (canMove)
+        if (canMove && Time.timeScale != 0)
         {
             rotationX += -_mouseInput.y * lookSpeed;
             rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
-            playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
+            _cameraPlaceHolder.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
             transform.rotation *= Quaternion.Euler(0, _mouseInput.x * lookSpeed, 0);
         }
     }
+    private bool IsGrounded() 
+ {
+        return Physics.Raycast(transform.position, Vector3.forward, 0.3f);
+ }
 
 
-    private void OnMove(InputValue value)
+private void OnMove(InputValue value)
     {
         _moveInput = value.Get<Vector2>();
     }
