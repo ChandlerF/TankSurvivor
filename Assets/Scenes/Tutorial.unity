@@ -15682,6 +15682,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5500345011116843468}
     - target: {fileID: 1890578207183809871, guid: 75b9158554da30446a571f8eb103c509, type: 3}
+      propertyPath: _tankGraveyard
+      value: 
+      objectReference: {fileID: 560930380}
+    - target: {fileID: 1890578207183809871, guid: 75b9158554da30446a571f8eb103c509, type: 3}
       propertyPath: _virtualCamera
       value: 
       objectReference: {fileID: 255054617}
