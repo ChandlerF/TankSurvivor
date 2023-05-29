@@ -1,10 +1,12 @@
 using Cinemachine;
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class TankDamageSystem : MonoBehaviour
 {
     public static TankDamageSystem Instance;
+    public event Action SwitchedPerspective;
 
     [SerializeField] private GameObject _tracksOriginal, _guardsOriginal, _headOriginal, _barrelOriginal;
     [SerializeField] private SpriteRenderer[] _tank2D;
@@ -42,7 +44,7 @@ public class TankDamageSystem : MonoBehaviour
     public void SelectRandomPart()
     {
         //There is overlap, think of it as a chance of luck for player
-        int x = Random.Range(0, 4);
+        int x = UnityEngine.Random.Range(0, 4);
 
         if(x == 0)
         {
@@ -100,7 +102,8 @@ public class TankDamageSystem : MonoBehaviour
         Rigidbody spawnedRB = spawnedPart.AddComponent<Rigidbody>();
 
         float bounds = spawnedPart.GetComponent<BoxCollider>().size.y;
-        Vector3 explosionOffset = new Vector3(Random.Range(-8.0f, 8.0f), Random.Range(bounds, bounds*1.5f), Random.Range(-8.0f, 8.0f));
+        Vector3 explosionOffset = new Vector3(UnityEngine.Random.Range(-8.0f, 8.0f), 
+            UnityEngine.Random.Range(bounds, bounds*1.5f), UnityEngine.Random.Range(-8.0f, 8.0f));
 
         spawnedRB.AddExplosionForce(400f, original.transform.position - explosionOffset, 100f, 1f);
         spawnedRB.useGravity = false;
@@ -147,6 +150,7 @@ public class TankDamageSystem : MonoBehaviour
         _tankMovement.enabled = !_bool;
         _playerMovement.enabled = _bool;
         PlayerMovement.MouseFollowEnabled = !_bool;
+        SwitchedPerspective?.Invoke();
         //Tank Shooting Script
         _projectileSpawner.enabled = !_bool;
 

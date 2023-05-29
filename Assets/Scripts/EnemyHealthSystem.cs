@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyHealthSystem : MonoBehaviour, IDamage
@@ -33,9 +34,34 @@ public class EnemyHealthSystem : MonoBehaviour, IDamage
             StartCoroutine(OnDead());
         }
     }
+    private void Start()
+    {
+        TankDamageSystem.Instance.SwitchedPerspective += TankDamage_SwitchedPerspective;
+    }
+
+    private void TankDamage_SwitchedPerspective()
+    {
+        if(bodyRenderer != null && hullRenderer != null)
+        {
+            bodyRenderer.enabled = PlayerMovement.MouseFollowEnabled;
+
+            transform.GetChild(0).TryGetComponent<SpriteRenderer>(out SpriteRenderer sr);
+            sr.enabled = PlayerMovement.MouseFollowEnabled;
+
+            transform.GetChild(0).GetChild(0).TryGetComponent<SpriteRenderer>(out SpriteRenderer sr1);
+            sr1.enabled = PlayerMovement.MouseFollowEnabled;
+
+            transform.GetChild(0).GetChild(0).GetChild(0).TryGetComponent<SpriteRenderer>(out SpriteRenderer sr2);
+            sr2.enabled = PlayerMovement.MouseFollowEnabled;
+
+            transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).TryGetComponent<SpriteRenderer>(out SpriteRenderer sr3);
+            sr3.enabled = PlayerMovement.MouseFollowEnabled;
+        }
+    }
 
     IEnumerator OnDead()
     {
+        TankDamageSystem.Instance.SwitchedPerspective -= TankDamage_SwitchedPerspective;
         isDead = true;
         bodyRenderer.enabled = false;
 

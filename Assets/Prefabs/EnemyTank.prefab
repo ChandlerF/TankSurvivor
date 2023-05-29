@@ -220,6 +220,8 @@ MonoBehaviour:
   waypoints: {fileID: 4998108588528922157}
   healthSystem: {fileID: 1859064093294883595}
   muzzleFlash: {fileID: 6671115648340595146}
+  spriteRenderers:
+  - {fileID: 4998108589432371688}
   bulletSpeed: 30
   shootRate: 2
 --- !u!50 &4998108588528922150

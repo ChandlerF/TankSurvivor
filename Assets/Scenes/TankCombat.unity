@@ -3363,7 +3363,7 @@ Transform:
   - {fileID: 413315935}
   - {fileID: 1715258839}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &641571743
 GameObject:
@@ -4924,6 +4924,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9914dd49ae08df4fbce3cd7f71bad99, type: 3}
+--- !u!212 &983227487 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 5968662521695480468, guid: 75b9158554da30446a571f8eb103c509, type: 3}
+  m_PrefabInstance: {fileID: 8887034378526215289}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &985294175
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12525,10 +12530,14 @@ PrefabInstance:
       propertyPath: _virtualCamera
       value: 
       objectReference: {fileID: 255054617}
-    - target: {fileID: 2644311305276570166, guid: 75b9158554da30446a571f8eb103c509, type: 3}
-      propertyPath: m_IsActive
-      value: 0
+    - target: {fileID: 1890578207183809871, guid: 75b9158554da30446a571f8eb103c509, type: 3}
+      propertyPath: _tank2D.Array.size
+      value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 1890578207183809871, guid: 75b9158554da30446a571f8eb103c509, type: 3}
+      propertyPath: _tank2D.Array.data[5]
+      value: 
+      objectReference: {fileID: 983227487}
     - target: {fileID: 4236912797925591566, guid: 75b9158554da30446a571f8eb103c509, type: 3}
       propertyPath: slider
       value: 
@@ -12555,7 +12564,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8887034380295443789, guid: 75b9158554da30446a571f8eb103c509, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8887034380295443789, guid: 75b9158554da30446a571f8eb103c509, type: 3}
       propertyPath: m_LocalPosition.x

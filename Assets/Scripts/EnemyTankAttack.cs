@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 [RequireComponent(typeof(WaypointMover))]
@@ -23,6 +24,7 @@ public class EnemyTankAttack : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
     }
+
     void Update()
     {
         if(!waypoints.IsFollowingWaypoints)
@@ -31,7 +33,6 @@ public class EnemyTankAttack : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(shootPos.position, (player.transform.position - transform.position).normalized, Mathf.Infinity);
             if (hit.transform.CompareTag("Player"))
             {
-                Debug.DrawLine(transform.position, hit.transform.position, Color.blue);
                 if (!isShooting)
                 {
                     StartCoroutine(ShootPlayer());
