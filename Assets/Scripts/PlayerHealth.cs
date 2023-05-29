@@ -35,7 +35,7 @@ public class PlayerHealth : MonoBehaviour, IDamage
         HPtoBeCompared = HP;
         SetMaxHealth(HP);
 
-        GrabParts.ReplacedPart += Instance_ReplacedPart;
+        TankDamageSystem.Instance.ReplacedPart += Instance_ReplacedPart;
     }
 
     private void Update()
@@ -112,6 +112,7 @@ public class PlayerHealth : MonoBehaviour, IDamage
         aud.PlayOneShot(explosionAudio, 0.4f);
         explosionFX.SetActive(true);
         yield return new WaitForSeconds(1f);
+        TankDamageSystem.Instance.ReplacedPart -= Instance_ReplacedPart;
         GameManager.Instance.LoseMenu();
     }
 
@@ -133,18 +134,12 @@ public class PlayerHealth : MonoBehaviour, IDamage
 
     void Instance_ReplacedPart()
     {
-        bool allPartsReplaced = (TankDamageSystem.Instance.Tracks &&
-                                 TankDamageSystem.Instance.Head &&
-                                 TankDamageSystem.Instance.Barrel &&
-                                 TankDamageSystem.Instance.Guards);
-        if (allPartsReplaced)
-        {
-            HP += HPtoBeCompared / 5;
-            if(HP >= HPtoBeCompared)
-            {
-                HP = HPtoBeCompared;
-            }
-            SetHealth(HP);
-        }
+        
+         HP += HPtoBeCompared / 5;
+         if(HP >= HPtoBeCompared)
+         {
+            HP = HPtoBeCompared;
+         }
+         SetHealth(HP);
     }
 }
