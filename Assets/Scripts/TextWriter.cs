@@ -5,34 +5,53 @@ using UnityEngine;
 
 public class TextWriter : MonoBehaviour
 {
-    TextMeshProUGUI _text;
-    string _textToWrite;
-    int characterIndex;
-    float timePerCharacter;
-    float timer;
+    private TextWriterSingle textWriterSingle;
 
     public void AddWriter(TextMeshProUGUI text, string textToWrite, float timePerCharacter)
     {
+        textWriterSingle = new(text, textToWrite, timePerCharacter);
+    }
+    private void Update()
+    {
+        if(textWriterSingle != null)
+        {
+            textWriterSingle.Update();
+        }
+    }
+    /*Represents a single TextWriter instance
+     * */
+
+    public class TextWriterSingle
+    {
+        TextMeshProUGUI _text;
+        string _textToWrite;
+        int characterIndex;
+        float timePerCharacter;
+        float timer;
+        public bool isFinished;
+        public TextWriterSingle(TextMeshProUGUI text, string textToWrite, float timePerCharacter)
+        { 
         _text = text;
         _textToWrite = textToWrite;
         this.timePerCharacter = timePerCharacter;
         characterIndex = 0;
-    }
-    private void Update()
-    {
-        if(_text != null)
+        }
+        public void Update()
         {
-            timer -= Time.deltaTime;
-            while(timer <= 0f )
+            if (_text != null)
             {
-                timer += timePerCharacter;
-                characterIndex++;
-                _text.text = _textToWrite.Substring(0, characterIndex);
-
-                if(characterIndex >= _textToWrite.Length)
+                timer -= Time.deltaTime;
+                while (timer <= 0f)
                 {
-                    _text = null;
-                    return;
+                    timer += timePerCharacter;
+                    characterIndex++;
+                    _text.text = _textToWrite.Substring(0, characterIndex);
+
+                    if (characterIndex >= _textToWrite.Length)
+                    {
+                        _text = null;
+                        return;
+                    }
                 }
             }
         }
