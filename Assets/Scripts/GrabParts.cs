@@ -35,7 +35,6 @@ public class GrabParts : MonoBehaviour
     {
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out _hitInfo, 5.0f))
         {
-            Debug.Log(_hitInfo.transform.tag);
             {
 
                 TankDamageSystem.Instance.TankToPlayer(TankDamageSystem.Instance.TankMovement,  false);
