@@ -325,7 +325,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackDistance: 14
   bulletSpeed: 30
-  shootRate: 0.5
+  shootRate: 0.9
   turnSpeed: 1
   HP: 15
   shootPosParent: {fileID: 584914092175414690}

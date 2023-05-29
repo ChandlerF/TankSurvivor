@@ -7799,14 +7799,6 @@ PrefabInstance:
       propertyPath: waypoint
       value: 
       objectReference: {fileID: 467365549}
-    - target: {fileID: 2186251468290367393, guid: aa17644f007d1794c83d3df9399a52d2, type: 3}
-      propertyPath: maxDistanceToPlayer
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 2186251468290367395, guid: aa17644f007d1794c83d3df9399a52d2, type: 3}
-      propertyPath: shootRate
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2186251468290367403, guid: aa17644f007d1794c83d3df9399a52d2, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -7854,10 +7846,6 @@ PrefabInstance:
     - target: {fileID: 2186251468290367406, guid: aa17644f007d1794c83d3df9399a52d2, type: 3}
       propertyPath: m_Name
       value: EnemyTankHeavy
-      objectReference: {fileID: 0}
-    - target: {fileID: 4811886840888001159, guid: aa17644f007d1794c83d3df9399a52d2, type: 3}
-      propertyPath: HP
-      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa17644f007d1794c83d3df9399a52d2, type: 3}

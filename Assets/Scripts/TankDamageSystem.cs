@@ -120,7 +120,7 @@ public class TankDamageSystem : MonoBehaviour
         SetBool(prefab, true);
         original.GetComponent<MeshRenderer>().material = prefab.GetComponent<MeshRenderer>().material;
         original.GetComponent<BoxCollider>().isTrigger = false;
-
+        //ReplacedPart?.Invoke()
         Destroy(prefab);
     }
 
