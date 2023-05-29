@@ -31,6 +31,8 @@ public class PlayerMovement : MonoBehaviour
     
     private float boostRefreshDelay;
 
+    public static bool MouseFollowEnabled = true;
+
     private void OnEnable()
     {
         if (boostEnabled)
@@ -82,10 +84,12 @@ public class PlayerMovement : MonoBehaviour
 
         SmoothMovement();
         RotateInDirectionOfInput();
-
         // RotateTowardsMouse();
-
-        FollowMousePosition();
+        if(MouseFollowEnabled)
+        {
+            FollowMousePositionOldInput();
+            //FollowMousePositionNewInput();
+        }
     }
 
     private void SmoothMovement()
@@ -109,10 +113,21 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-    private void FollowMousePosition()
+    private void FollowMousePositionNewInput()
     {
         pointPos = Camera.main.ScreenToWorldPoint(pointPosition.action.ReadValue<Vector2>());
         
+        Vector2 facingDirection = pointPos - _rbHull.position;
+
+        float angle = Mathf.Atan2(facingDirection.y, facingDirection.x) * Mathf.Rad2Deg;
+
+        _rbHull.MoveRotation(angle - 90f);
+    }
+
+    private void FollowMousePositionOldInput()
+    {
+        pointPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
         Vector2 facingDirection = pointPos - _rbHull.position;
 
         float angle = Mathf.Atan2(facingDirection.y, facingDirection.x) * Mathf.Rad2Deg;
@@ -161,9 +176,5 @@ public class PlayerMovement : MonoBehaviour
             _moveSpeed *= 3.5f;
             boostRefreshDelay = startBoostRefreshDelay;
         }
-    }
-    IEnumerator Wait()
-    {
-        yield return new WaitForSeconds(boostRefreshDelay);
     }
 }

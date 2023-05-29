@@ -21,17 +21,23 @@ public class ProjectileSpawner : MonoBehaviour
     [SerializeField] int damage;
 
     bool isShooting;
+    //Currently old system is not working
+    /*    void OnEnable()
+        {
+            _shoot.action.performed += Spawn;
+        }
 
-    void OnEnable()
+        void OnDisable()
+        {
+            _shoot.action.performed -= Spawn;
+        }*/
+    private void Update()
     {
-        _shoot.action.performed += Spawn;
+        if(Input.GetMouseButton(0) && !isShooting)
+        {
+            StartCoroutine(Shoot());
+        }
     }
-
-    void OnDisable()
-    {
-        _shoot.action.performed -= Spawn;
-    }
-
     private void Spawn(InputAction.CallbackContext obj)
     {
         if(!isShooting)

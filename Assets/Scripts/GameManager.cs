@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
         levelIndex = SceneManager.GetActiveScene().buildIndex;
         isMainMenu = levelIndex == 0;
         //if this isn't the main menu scene
-        if(!isMainMenu)
+        if(!isMainMenu && PlayerMovement.MouseFollowEnabled)
         {
             _timeScaleDefault = Time.timeScale;
 
@@ -72,7 +72,6 @@ public class GameManager : MonoBehaviour
         }
         aud.Play();
     }
-
     private void OnEnable()
     {
         if(!isMainMenu)
@@ -185,5 +184,16 @@ public class GameManager : MonoBehaviour
     public void BossDied()
     {
         WinMenu();
+    }
+
+    public void CursorConfined()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.lockState = CursorLockMode.Confined;
+    }
+
+    public void CursorLocked()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }

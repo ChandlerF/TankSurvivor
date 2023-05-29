@@ -27,11 +27,12 @@ public class FirstPersonController : MonoBehaviour
 
     void Start()
     {
+        Debug.Log("PlayerController activated");
         characterController = GetComponent<CharacterController>();
 
         // Lock cursor
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
     }
 
 
@@ -79,7 +80,7 @@ public class FirstPersonController : MonoBehaviour
             rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
             _cameraPlaceHolder.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
             transform.rotation *= Quaternion.Euler(0, _mouseInput.x * lookSpeed, 0);
-        }
+            }
     }
     private bool IsGrounded() 
  {
@@ -100,6 +101,9 @@ private void OnMove(InputValue value)
 
     private void OnLook(InputValue value)
     {
-        _mouseInput = value.Get<Vector2>();
+        if(!PlayerMovement.MouseFollowEnabled)
+        {
+            _mouseInput = value.Get<Vector2>();
+        }
     }
 }
