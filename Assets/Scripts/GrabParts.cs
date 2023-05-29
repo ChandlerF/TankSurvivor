@@ -6,10 +6,11 @@ public class GrabParts : MonoBehaviour
     private RaycastHit _hitInfo;
     private bool _isHolding = false;
     private GameObject _heldPart;
+    [SerializeField] private GameObject _holdPos;   
 
     private void OnFire()
     {
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out _hitInfo, 5.0f))
+        if (Physics.SphereCast(Camera.main.transform.position, 0.7f, Camera.main.transform.forward, out _hitInfo, 6.0f))
         {
             if (_hitInfo.transform.CompareTag("TankBarrel") ||
                 _hitInfo.transform.CompareTag("TankTracks") ||
@@ -33,7 +34,7 @@ public class GrabParts : MonoBehaviour
 
     private void OnSecondaryFire()
     {
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out _hitInfo, 5.0f))
+        if (Physics.SphereCast(Camera.main.transform.position, 0.7f, Camera.main.transform.forward, out _hitInfo, 6.0f))
         {
             {
 
@@ -56,6 +57,7 @@ public class GrabParts : MonoBehaviour
         Destroy(_heldPart.GetComponent<BoxCollider>());
 
         _hitInfo.transform.SetParent(transform);
+        _hitInfo.transform.position = _holdPos.transform.position;
     }
 
 

@@ -233,7 +233,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 286528801783665479}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.02, y: 0, z: 0}
+  m_LocalPosition: {x: -0.015, y: 0.065, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -996,7 +996,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8887034378699959084}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.81, z: 0}
+  m_LocalPosition: {x: 0.0415, y: 0.81, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1662,6 +1662,10 @@ PrefabInstance:
       propertyPath: jumpSpeed
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 3123030004933738205, guid: 16cbb4476bad51f4fb958ca1fc57cd74, type: 3}
+      propertyPath: _holdPos
+      value: 
+      objectReference: {fileID: 6655525224754594558}
     - target: {fileID: 3123030005292053045, guid: 16cbb4476bad51f4fb958ca1fc57cd74, type: 3}
       propertyPath: m_Layer
       value: 11
@@ -1684,6 +1688,11 @@ Transform:
 --- !u!1 &341047202113420733 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3123030004933738200, guid: 16cbb4476bad51f4fb958ca1fc57cd74, type: 3}
+  m_PrefabInstance: {fileID: 3453310530933637989}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6655525224754594558 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8336641525451325851, guid: 16cbb4476bad51f4fb958ca1fc57cd74, type: 3}
   m_PrefabInstance: {fileID: 3453310530933637989}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8887034378800704774
@@ -2122,6 +2131,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 341047202113420733}
     - target: {fileID: 7019344294770757966, guid: 11688cb3856db244b9e134f594ecb9c7, type: 3}
+      propertyPath: TankMovement
+      value: 
+      objectReference: {fileID: 8887034380295443784}
+    - target: {fileID: 7019344294770757966, guid: 11688cb3856db244b9e134f594ecb9c7, type: 3}
       propertyPath: _tankMovement
       value: 
       objectReference: {fileID: 8887034380295443787}
@@ -2139,7 +2152,7 @@ PrefabInstance:
       objectReference: {fileID: 8887034380295443791}
     - target: {fileID: 7019344294770757966, guid: 11688cb3856db244b9e134f594ecb9c7, type: 3}
       propertyPath: _tank2D.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7019344294770757966, guid: 11688cb3856db244b9e134f594ecb9c7, type: 3}
       propertyPath: _gunFire.Array.size
@@ -2165,6 +2178,10 @@ PrefabInstance:
       propertyPath: _tank2D.Array.data[4]
       value: 
       objectReference: {fileID: 5382491131398635602}
+    - target: {fileID: 7019344294770757966, guid: 11688cb3856db244b9e134f594ecb9c7, type: 3}
+      propertyPath: _tank2D.Array.data[5]
+      value: 
+      objectReference: {fileID: 5968662521695480468}
     - target: {fileID: 7019344294770757966, guid: 11688cb3856db244b9e134f594ecb9c7, type: 3}
       propertyPath: _gunFire.Array.data[0]
       value: 

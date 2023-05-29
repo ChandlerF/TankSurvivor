@@ -12,6 +12,8 @@ public class TankDamageSystem : MonoBehaviour
     [SerializeField] private SpriteRenderer[] _tank2D;
     [SerializeField] private MachineGunFire[] _gunFire;
     [SerializeField] private GameObject _tracksPrefab, _guardsPrefab, _headPrefab, _barrelPrefab;
+
+
     public bool Tracks = true, Guards = true, Head = true, Barrel = true;
 
     [SerializeField] private Material _repairableMat;
