@@ -12,6 +12,7 @@ public class EnemyHealthSystem : MonoBehaviour, IDamage
     [SerializeField] AudioClip explosion;
     [SerializeField] SpriteRenderer bodyRenderer;
     [SerializeField] SpriteRenderer hullRenderer;
+    [SerializeField] GameObject Models;
 
     [Header("Stats")]
     [SerializeField, Range(0, 50)] int HP = 15;
@@ -43,6 +44,8 @@ public class EnemyHealthSystem : MonoBehaviour, IDamage
     {
         if(bodyRenderer != null && hullRenderer != null)
         {
+            Models.SetActive(!PlayerMovement.MouseFollowEnabled);
+
             bodyRenderer.enabled = PlayerMovement.MouseFollowEnabled;
 
             transform.GetChild(0).TryGetComponent<SpriteRenderer>(out SpriteRenderer sr);

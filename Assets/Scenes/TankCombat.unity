@@ -2752,6 +2752,11 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 22.1, y: 11.96}
   m_EdgeRadius: 0
+--- !u!1 &566247571 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8887034380295443784, guid: 75b9158554da30446a571f8eb103c509, type: 3}
+  m_PrefabInstance: {fileID: 8887034378526215289}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &577520462
 GameObject:
   m_ObjectHideFlags: 0
@@ -12522,6 +12527,10 @@ PrefabInstance:
       propertyPath: _reticle
       value: 
       objectReference: {fileID: 1362228391}
+    - target: {fileID: 1890578207183809871, guid: 75b9158554da30446a571f8eb103c509, type: 3}
+      propertyPath: TankMovement
+      value: 
+      objectReference: {fileID: 566247571}
     - target: {fileID: 1890578207183809871, guid: 75b9158554da30446a571f8eb103c509, type: 3}
       propertyPath: _desertMap3D
       value: 
