@@ -11,9 +11,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Transform tankBody;
     [SerializeField] Transform tankHull;
     [SerializeField] float bodyRotateSpeed;
-    [SerializeField, Range(0.5f, 4f)] private float startBoostRefreshDelay = 1.5f;
+    [SerializeField, Range(0.5f, 4f)] private float startBoostRefreshDelay = 0.5f;
     [SerializeField, Range(0, 1)] float boostDuration;
-    [SerializeField] bool boostEnabled = true;
+    //a[SerializeField] bool boostEnabled = true;
 
     private Vector2 pointPos;
     private Vector2 _moveInput;
@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
 
     public static bool MouseFollowEnabled = true;
 
-    private void OnEnable()
+/*    private void OnEnable()
     {
         if (boostEnabled)
         {
@@ -47,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
         {
             dash.action.performed -= Dash;
         }
-    }
+    }*/
     private void Start()
     {
         boostRefreshDelay = startBoostRefreshDelay;
@@ -56,30 +56,34 @@ public class PlayerMovement : MonoBehaviour
         _rbHull = tankHull.GetComponent<Rigidbody2D>();
         originalMoveSpeed = _moveSpeed;
     }
+    private void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            Dash();
+        }
+    }
     private void FixedUpdate()
     {
         if(isBoosted)
         {
-            //Timer goes down while boosting
+            //Timer goes up while boosting
             if(timer <= boostDuration)
             {
                 timer += Time.deltaTime;
             }
-
             //Boosting ends and speed resets
             else
             {
                 isBoosted = false;
                 _moveSpeed = originalMoveSpeed;
-
             }
         }
-
         //boost refresh timer starts
-        if (!isBoosted && boostRefreshDelay >= 0)
+        if (!isBoosted && boostRefreshDelay >= Mathf.Epsilon)
         {
             boostRefreshDelay -= Time.deltaTime;
-            timer = 0f;
+            timer = 0;
         }
 
         SmoothMovement();
@@ -168,7 +172,7 @@ public class PlayerMovement : MonoBehaviour
         _tankDamageSystem.TankToPlayer(_tankDamageSystem.gameObject, true);
     }
 
-    private void Dash(InputAction.CallbackContext obj)
+    private void Dash()
     {
         if(boostRefreshDelay <= Mathf.Epsilon)
         {

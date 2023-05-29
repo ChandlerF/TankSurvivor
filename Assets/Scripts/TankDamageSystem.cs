@@ -7,7 +7,8 @@ public class TankDamageSystem : MonoBehaviour
     public static TankDamageSystem Instance;
 
     [SerializeField] private GameObject _tracksOriginal, _guardsOriginal, _headOriginal, _barrelOriginal;
-
+    [SerializeField] private SpriteRenderer[] _tank2D;
+    [SerializeField] private MachineGunFire[] _gunFire;
     [SerializeField] private GameObject _tracksPrefab, _guardsPrefab, _headPrefab, _barrelPrefab;
     public bool Tracks = true, Guards = true, Head = true, Barrel = true;
 
@@ -151,7 +152,14 @@ public class TankDamageSystem : MonoBehaviour
         _tankModel.SetActive(_bool);
         _desertMap3D.SetActive(_bool);
         _reticle.SetActive(!_bool);
-
+        for(int i = 0; i < _tank2D.Length; i++)
+        {
+            _tank2D[i].enabled = !_bool;
+        }
+        for(int i = 0; i < _gunFire.Length; i++)
+        {
+            _gunFire[i].enabled = !_bool;
+        }
         //Change perspective of camera to go into first person
         Camera.main.orthographic = !_bool;
 
