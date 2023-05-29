@@ -7,7 +7,7 @@ public class TankDamageSystem : MonoBehaviour
 {
     public static TankDamageSystem Instance;
     public event Action SwitchedPerspective;
-
+    public event Action ReplacedPart;
     [SerializeField] private GameObject _tracksOriginal, _guardsOriginal, _headOriginal, _barrelOriginal;
     [SerializeField] private SpriteRenderer[] _tank2D;
     [SerializeField] private MachineGunFire[] _gunFire;
