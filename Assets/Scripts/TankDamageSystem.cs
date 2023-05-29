@@ -12,7 +12,7 @@ public class TankDamageSystem : MonoBehaviour
     public bool Tracks = true, Guards = true, Head = true, Barrel = true;
 
     [SerializeField] private Material _repairableMat;
-
+    [SerializeField] private FollowTankBody _followTankBody;
     [SerializeField] private PlayerInput _tankMovement, _playerMovement;
     [SerializeField] private GameObject _tankModel, _desertMap3D, _playerFPS, _reticle;
     [SerializeField] private CinemachineVirtualCamera _virtualCamera;
