@@ -136,8 +136,11 @@ public class GameManager : MonoBehaviour
             activeMenu.SetActive(false);
             activeMenu = null;
         }
-        shoot.enabled = true;
-        movement.enabled = true;
+        if(player != null)
+        {
+            shoot.enabled = true;
+            movement.enabled = true;
+        }
         isPaused = false;
         Time.timeScale = _timeScaleDefault;
         Cursor.visible = false;
@@ -159,6 +162,10 @@ public class GameManager : MonoBehaviour
     public void ReloadLevel()
     {
         ResumeState();
+        if(!PlayerMovement.MouseFollowEnabled)
+        {
+            PlayerMovement.MouseFollowEnabled = true;
+        }
         SceneManager.LoadScene(levelIndex);
     }
 
