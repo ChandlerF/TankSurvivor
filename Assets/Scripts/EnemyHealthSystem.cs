@@ -38,7 +38,21 @@ public class EnemyHealthSystem : MonoBehaviour, IDamage
     {
         isDead = true;
         bodyRenderer.enabled = false;
-        hullRenderer.enabled = false;
+
+        transform.GetChild(0).TryGetComponent<SpriteRenderer>(out SpriteRenderer sr);
+        sr.enabled = false;
+
+        transform.GetChild(0).GetChild(0).TryGetComponent<SpriteRenderer>(out SpriteRenderer sr1);
+        sr1.enabled = false;
+
+        transform.GetChild(0).GetChild(0).GetChild(0).TryGetComponent<SpriteRenderer>(out SpriteRenderer sr2);
+        sr2.enabled = false;
+
+        transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).TryGetComponent<SpriteRenderer>(out SpriteRenderer sr3);
+        sr3.enabled = false;
+
+
+        //hullRenderer.enabled = false;
         explosionFX.SetActive(true);
         aud.PlayOneShot(explosion);
         yield return new WaitForSeconds(1f);
