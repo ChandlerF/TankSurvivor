@@ -202,9 +202,9 @@ MonoBehaviour:
   burnoutSound: {fileID: 8300000, guid: 69bbf8bcca8c8924991f1fd03c4be8f6, type: 3}
   muzzleFlash: {fileID: 8886137863772794358}
   projectileSpeed: 45
-  shootRate: 0.01
+  shootRate: 0.05
   damage: 1
-  burnoutTime: 5
+  burnoutTime: 3
   slider: {fileID: 0}
   burnoutFill: {fileID: 0}
   isTimerGun: 0
@@ -399,9 +399,9 @@ MonoBehaviour:
   burnoutSound: {fileID: 8300000, guid: 69bbf8bcca8c8924991f1fd03c4be8f6, type: 3}
   muzzleFlash: {fileID: 8886137862367538230}
   projectileSpeed: 45
-  shootRate: 0.01
+  shootRate: 0.05
   damage: 1
-  burnoutTime: 5
+  burnoutTime: 3
   slider: {fileID: 0}
   burnoutFill: {fileID: 0}
   isTimerGun: 1
@@ -992,7 +992,8 @@ MonoBehaviour:
   tankBody: {fileID: 8887034380295443789}
   tankHull: {fileID: 8887034379100966004}
   bodyRotateSpeed: 300
-  boostDuration: 0.255
+  startBoostRefreshDelay: 1.5
+  boostDuration: 0.19
   boostEnabled: 1
   _tankDamageSystem: {fileID: 1890578207183809871}
 --- !u!114 &8887034380295443787
