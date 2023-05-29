@@ -40,7 +40,14 @@ public class PlayerHealth : MonoBehaviour, IDamage
     {
         if(HP > 0)
         {
-            HP -= amount;
+            if(!TankDamageSystem.Instance.Guards)
+            {
+                HP -= (amount + 1);
+            }
+            else
+            {
+                HP -= amount;
+            }
             SetHealth(HP);
             CinemachineShake.Instance.ShakeCamera(1f, 0.5f);
         }
