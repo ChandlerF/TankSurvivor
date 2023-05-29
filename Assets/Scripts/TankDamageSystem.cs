@@ -14,7 +14,7 @@ public class TankDamageSystem : MonoBehaviour
 
     [SerializeField] private Material _repairableMat;
     [SerializeField] private PlayerInput _tankMovement, _playerMovement;
-    [SerializeField] private GameObject _tankModel, _desertMap3D, _playerFPS, _reticle;
+    [SerializeField] private GameObject _tankModel, _desertMap3D, _playerFPS, _reticle, _trailRenderer;
     [SerializeField] private CinemachineVirtualCamera _virtualCamera;
     [SerializeField] private ProjectileSpawner _projectileSpawner;
     [SerializeField] private PlayerMovement _tankMovementOrtho;
@@ -96,11 +96,13 @@ public class TankDamageSystem : MonoBehaviour
         original.GetComponent<MeshRenderer>().material = _repairableMat;
         original.GetComponent<BoxCollider>().isTrigger = true;
 
-        Vector3 explosionOffset = new Vector3(Random.Range(-8.0f, 8.0f), Random.Range(0.1f, 3f), Random.Range(-8.0f, 8.0f));
-
         GameObject spawnedPart = Instantiate(prefab, original.transform.position, original.transform.rotation);
         Rigidbody spawnedRB = spawnedPart.AddComponent<Rigidbody>();
-        spawnedRB.AddExplosionForce(850f, original.transform.position - explosionOffset, 100f, 1f);
+
+        float bounds = spawnedPart.GetComponent<BoxCollider>().size.y;
+        Vector3 explosionOffset = new Vector3(Random.Range(-8.0f, 8.0f), Random.Range(bounds, bounds*1.5f), Random.Range(-8.0f, 8.0f));
+
+        spawnedRB.AddExplosionForce(400f, original.transform.position - explosionOffset, 100f, 1f);
         spawnedRB.useGravity = false;
         spawnedPart.AddComponent<TankPartsGravity>();
 
@@ -152,7 +154,10 @@ public class TankDamageSystem : MonoBehaviour
         _tankModel.SetActive(_bool);
         _desertMap3D.SetActive(_bool);
         _reticle.SetActive(!_bool);
-        for(int i = 0; i < _tank2D.Length; i++)
+        _trailRenderer.SetActive(!_bool);
+
+
+        for (int i = 0; i < _tank2D.Length; i++)
         {
             _tank2D[i].enabled = !_bool;
         }
@@ -160,6 +165,8 @@ public class TankDamageSystem : MonoBehaviour
         {
             _gunFire[i].enabled = !_bool;
         }
+
+
         //Change perspective of camera to go into first person
         Camera.main.orthographic = !_bool;
 
