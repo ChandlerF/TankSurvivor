@@ -36,11 +36,33 @@ public class PlayerHealth : MonoBehaviour, IDamage
         SetMaxHealth(HP);
     }
 
+    private void Update()
+    {
+        if(!TankDamageSystem.Instance.Tracks)
+        {
+            playerSprites[1].enabled = false;
+        }
+        if(!TankDamageSystem.Instance.Head)
+        {
+            playerSprites[2].enabled = false;
+        }
+        if(!TankDamageSystem.Instance.Barrel)
+        {
+            playerSprites[3].enabled = false;
+        }
+    }
     public void TakeDamage(int amount)
     {
         if(HP > 0)
         {
-            HP -= amount;
+            if(!TankDamageSystem.Instance.Guards)
+            {
+                HP -= (amount + 1);
+            }
+            else
+            {
+                HP -= amount;
+            }
             SetHealth(HP);
             CinemachineShake.Instance.ShakeCamera(1f, 0.5f);
         }

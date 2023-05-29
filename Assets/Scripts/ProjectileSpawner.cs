@@ -21,7 +21,7 @@ public class ProjectileSpawner : MonoBehaviour
     [SerializeField] int damage;
 
     bool isShooting;
-    //Currently old system is not working
+    //Currently new input system is not working
     /*    void OnEnable()
         {
             _shoot.action.performed += Spawn;
@@ -33,13 +33,14 @@ public class ProjectileSpawner : MonoBehaviour
         }*/
     private void Update()
     {
-        if(Input.GetMouseButton(0) && !isShooting)
+        if(Input.GetMouseButton(0) && !isShooting && TankDamageSystem.Instance.Barrel)
         {
             StartCoroutine(Shoot());
         }
     }
     private void Spawn(InputAction.CallbackContext obj)
     {
+        //Implement when new input system bug is fixed
         if(!isShooting)
         {
             StartCoroutine(Shoot());

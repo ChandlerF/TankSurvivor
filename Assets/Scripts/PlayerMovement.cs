@@ -58,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetKeyUp(KeyCode.Space) && TankDamageSystem.Instance.Tracks)
         {
             Dash();
         }
@@ -85,11 +85,17 @@ public class PlayerMovement : MonoBehaviour
             boostRefreshDelay -= Time.deltaTime;
             timer = 0;
         }
-
-        SmoothMovement();
-        RotateInDirectionOfInput();
-        // RotateTowardsMouse();
-        if(MouseFollowEnabled)
+        if(TankDamageSystem.Instance.Tracks)
+        {
+            SmoothMovement();
+            RotateInDirectionOfInput();
+        }
+        if (!TankDamageSystem.Instance.Tracks)
+        {
+            _rbBody.velocity = _moveInput * 0;
+        }
+            // RotateTowardsMouse();
+        if (MouseFollowEnabled && TankDamageSystem.Instance.Head)
         {
             FollowMousePositionOldInput();
             //FollowMousePositionNewInput();

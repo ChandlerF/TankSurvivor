@@ -203,4 +203,9 @@ public class GameManager : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
     }
+    public void LoadTutorial()
+    {
+        ResumeState();
+        SceneManager.LoadScene(SceneManager.sceneCountInBuildSettings - 1);
+    }
 }
