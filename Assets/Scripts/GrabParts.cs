@@ -8,7 +8,6 @@ public class GrabParts : MonoBehaviour
     private GameObject _heldPart;
     [SerializeField] private GameObject _holdPos;
 
-    public static event Action ReplacedPart;
     private void OnFire()
     {
         if (Physics.SphereCast(Camera.main.transform.position, 0.7f, Camera.main.transform.forward, out _hitInfo, 6.0f))
@@ -85,7 +84,6 @@ public class GrabParts : MonoBehaviour
 
         //Progress Bar?
         TankDamageSystem.Instance.RepairPart( _hitInfo.transform.gameObject, _heldPart);
-
         _isHolding = false;
     }
 }

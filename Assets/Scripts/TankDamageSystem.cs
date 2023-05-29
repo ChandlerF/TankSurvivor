@@ -7,6 +7,7 @@ public class TankDamageSystem : MonoBehaviour
 {
     public static TankDamageSystem Instance;
     public event Action SwitchedPerspective;
+    public event Action ReplacedPart;
     [SerializeField] private GameObject _tracksOriginal, _guardsOriginal, _headOriginal, _barrelOriginal;
     [SerializeField] private SpriteRenderer[] _tank2D;
     [SerializeField] private MachineGunFire[] _gunFire;
@@ -119,7 +120,7 @@ public class TankDamageSystem : MonoBehaviour
         SetBool(prefab, true);
         original.GetComponent<MeshRenderer>().material = prefab.GetComponent<MeshRenderer>().material;
         original.GetComponent<BoxCollider>().isTrigger = false;
-        //ReplacedPart?.Invoke()
+        ReplacedPart?.Invoke();
         Destroy(prefab);
     }
 
