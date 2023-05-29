@@ -34,6 +34,8 @@ public class PlayerHealth : MonoBehaviour, IDamage
         ActivateMachineGuns(isMachineGunActive);
         HPtoBeCompared = HP;
         SetMaxHealth(HP);
+
+        GrabParts.ReplacedPart += Instance_ReplacedPart;
     }
 
     private void Update()
@@ -127,5 +129,18 @@ public class PlayerHealth : MonoBehaviour, IDamage
     void SetHealth(int health)
     {
         slider.value = health;
+    }
+
+    void Instance_ReplacedPart()
+    {
+        bool allPartsReplaced = (TankDamageSystem.Instance.Tracks &&
+                                 TankDamageSystem.Instance.Head &&
+                                 TankDamageSystem.Instance.Barrel &&
+                                 TankDamageSystem.Instance.Guards);
+        if (allPartsReplaced)
+        {
+            HP = HPtoBeCompared;
+            SetHealth(HP);
+        }
     }
 }

@@ -1,13 +1,14 @@
 using UnityEngine;
-
+using System;
 public class GrabParts : MonoBehaviour
 {
 
     private RaycastHit _hitInfo;
     private bool _isHolding = false;
     private GameObject _heldPart;
-    [SerializeField] private GameObject _holdPos;   
+    [SerializeField] private GameObject _holdPos;
 
+    public static event Action ReplacedPart;
     private void OnFire()
     {
         if (Physics.SphereCast(Camera.main.transform.position, 0.7f, Camera.main.transform.forward, out _hitInfo, 6.0f))
