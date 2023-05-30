@@ -12560,6 +12560,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 341047202113420728, guid: 75b9158554da30446a571f8eb103c509, type: 3}
+      propertyPath: _layerMask.m_Bits
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1890578207183809871, guid: 75b9158554da30446a571f8eb103c509, type: 3}
       propertyPath: _reticle
       value: 

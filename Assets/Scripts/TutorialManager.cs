@@ -28,8 +28,8 @@ public class TutorialManager : MonoBehaviour
             if(!isWriting)
                 for(int i = 0; i < messages.Length; i++)
                 {
-                    textWriter.AddWriter(messageText, messages[i], 0.08f);
-                    yield return new WaitForSeconds(7f);
+                    textWriter.AddWriter(messageText, messages[i], 0.04f);
+                    yield return new WaitForSeconds(5f);
                     isWriting = false;
                 }
             isFinished = true;

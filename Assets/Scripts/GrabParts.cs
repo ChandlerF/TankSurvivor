@@ -1,5 +1,7 @@
 using UnityEngine;
 using System;
+using System.Linq;
+
 public class GrabParts : MonoBehaviour
 {
 
@@ -7,27 +9,32 @@ public class GrabParts : MonoBehaviour
     private bool _isHolding = false;
     private GameObject _heldPart;
     [SerializeField] private GameObject _holdPos;
+    [SerializeField] private LayerMask _layerMask;
 
     private void OnFire()
     {
-        if (Physics.SphereCast(Camera.main.transform.position, 0.7f, Camera.main.transform.forward, out _hitInfo, 6.0f))
+        RaycastHit[] hit = Physics.SphereCastAll(Camera.main.transform.position, 0.7f, Camera.main.transform.forward, 8.0f, _layerMask, QueryTriggerInteraction.Collide);
+
+        if (hit.Length > 0)
         {
-            if (_hitInfo.transform.CompareTag("TankBarrel") ||
-                _hitInfo.transform.CompareTag("TankTracks") ||
-                _hitInfo.transform.CompareTag("TankWheelGuard") ||
-                _hitInfo.transform.CompareTag("TankHead"))
+            foreach (RaycastHit i in hit)
             {
-
-                Debug.Log("Fire");
-                _hitInfo.transform.TryGetComponent<BoxCollider>(out BoxCollider boxCollider);
-
-                if (!_isHolding && _hitInfo.transform.TryGetComponent<Rigidbody>(out _))
+                if (i.transform.CompareTag("TankBarrel") ||
+                i.transform.CompareTag("TankTracks") ||
+                i.transform.CompareTag("TankWheelGuard") ||
+                i.transform.CompareTag("TankHead"))
                 {
-                    PickupPart();
-                }
-                else if(_isHolding && boxCollider.isTrigger)
-                {
-                    RepairPart();
+                    _hitInfo = i;
+                    i.transform.TryGetComponent<BoxCollider>(out BoxCollider boxCollider);
+
+                    if (!_isHolding && i.transform.TryGetComponent<Rigidbody>(out _))
+                    {
+                        PickupPart();
+                    }
+                    else if (_isHolding && boxCollider.isTrigger)
+                    {
+                        RepairPart();
+                    }
                 }
             }
         }
@@ -35,19 +42,24 @@ public class GrabParts : MonoBehaviour
 
     private void OnSecondaryFire()
     {
-        if (Physics.SphereCast(Camera.main.transform.position, 0.7f, Camera.main.transform.forward, out _hitInfo, 6.0f))
+        RaycastHit[] hit = Physics.SphereCastAll(Camera.main.transform.position, 0.7f, Camera.main.transform.forward, 8.0f, _layerMask, QueryTriggerInteraction.Collide);
+
+        if (hit.Length > 0)
         {
-            if (_hitInfo.transform.CompareTag("TankBarrel") ||
-                _hitInfo.transform.CompareTag("TankTracks") ||
-                _hitInfo.transform.CompareTag("TankWheelGuard") ||
-                _hitInfo.transform.CompareTag("TankHead") ||
-                _hitInfo.transform.CompareTag("TankRepair"))
-            
+            foreach (RaycastHit i in hit)
+            {
+                if (i.transform.CompareTag("TankBarrel") ||
+                i.transform.CompareTag("TankTracks") ||
+                i.transform.CompareTag("TankWheelGuard") ||
+                i.transform.CompareTag("TankHead") ||
+                i.transform.CompareTag("TankRepair"))
+
                 {
 
-                TankDamageSystem.Instance.TankToPlayer(TankDamageSystem.Instance.TankMovement,  false);
-
+                    TankDamageSystem.Instance.TankToPlayer(TankDamageSystem.Instance.TankMovement, false);
+                    return;
                 }
+            }
         }
     }
 
